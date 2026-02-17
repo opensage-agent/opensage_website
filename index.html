@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="OpenSage: Self-programming Agent Generation Engine">
+  <meta name="description" content="OpenSage is an AI-centered agent development kit (ADK) that enables LLMs to self-generate agent topology, synthesize tools, and manage hierarchical memory for software engineering and security tasks.">
+  <meta name="keywords" content="agent development kit, ADK, AI agents, tool synthesis, multi-agent topology, memory, software engineering, cybersecurity">
+  <meta name="author" content="Hongwei Li, Zhun Wang, Qinrun Dai, Yuzhou Nie, Jinjun Peng, Ruitong Liu, Jingyang Zhang, Kaijie Zhu, Jingxuan He, Lun Wang, Yangruibo Ding, Yueqi Chen, Wenbo Guo, Dawn Song">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OpenSage">
+  <meta property="og:title" content="OpenSage: Self-programming Agent Generation Engine">
+  <meta property="og:description" content="AI-centered agent construction with self-generated topology, dynamic tool synthesis, and hierarchical memory.">
+  <meta property="og:image" content="static/images/social_preview.svg">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="OpenSage: Self-programming Agent Generation Engine">
+  <meta name="twitter:description" content="AI-centered agent construction with self-generated topology, dynamic tool synthesis, and hierarchical memory.">
+  <meta name="twitter:image" content="static/images/social_preview.svg">
+
+  <title>OpenSage: Self-programming Agent Generation Engine</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="apple-touch-icon" href="static/images/favicon.ico">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <!-- Non-critical CSS -->
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- JS -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+</head>
+
+<body>
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <main id="main-content">
+    <!-- Hero -->
+    <section class="hero opensage-hero">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h1 class="title is-1 publication-title">OpenSage: Self-programming Agent Generation Engine</h1>
+
+              <div class="is-size-6 publication-authors authors-muted">
+                <span class="author-block"><em>Hongwei Li</em><sup>1,*</sup>,</span>
+                <span class="author-block"><em>Zhun Wang</em><sup>2,*</sup>,</span>
+                <span class="author-block"><em>Qinrun Dai</em><sup>3</sup>,</span>
+                <span class="author-block"><em>Yuzhou Nie</em><sup>1,6</sup>,</span>
+                <span class="author-block"><em>Jinjun Peng</em><sup>4</sup>,</span>
+                <span class="author-block"><em>Ruitong Liu</em><sup>3</sup>,</span>
+                <span class="author-block"><em>Jingyang Zhang</em><sup>6</sup>,</span>
+                <span class="author-block"><em>Kaijie Zhu</em><sup>1</sup>,</span>
+                <span class="author-block"><em>Jingxuan He</em><sup>2</sup>,</span>
+                <span class="author-block"><em>Lun Wang</em><sup>7</sup>,</span>
+                <span class="author-block"><em>Yangruibo Ding</em><sup>5</sup>,</span>
+                <span class="author-block"><em>Yueqi Chen</em><sup>3</sup>,</span>
+                <span class="author-block"><em>Wenbo Guo</em><sup>1,6</sup>,</span>
+                <span class="author-block"><em>Dawn Song</em><sup>2,6</sup></span>
+              </div>
+
+              <div class="is-size-7 publication-authors affils-muted">
+                <span class="author-block"><sup>1</sup>UC Santa Barbara</span>
+                <span class="author-block"><sup>2</sup>UC Berkeley</span>
+                <span class="author-block"><sup>3</sup>University of Colorado Boulder</span>
+                <span class="author-block"><sup>4</sup>Columbia University</span>
+                <span class="author-block"><sup>5</sup>UCLA</span>
+                <span class="author-block"><sup>6</sup>Virtue AI</span>
+                <span class="author-block"><sup>7</sup>Google DeepMind</span>
+              </div>
+
+              <div class="eql-cntrb"><small><sup>*</sup>Fully equal contribution</small></div>
+
+              <p class="hero-tagline">
+                An AI-centered agent generation engine that enables LLMs to self-create agent topology, synthesize toolsets, and manage structured memory for complex real-world tasks.
+              </p>
+
+              <div class="column has-text-centered">
+                <div class="publication-links">
+                  <span class="link-block">
+                    <a href="static/pdfs/paper.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon"><i class="fas fa-project-diagram"></i></span>
+                      <span>Paper</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a href="https://github.com/AIgiSE/AIgiSE" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon"><i class="fab fa-github"></i></span>
+                      <span>Code</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a href="documentation/" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon"><i class="fas fa-book"></i></span>
+                      <span>Documentation</span>
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="section" id="overview">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Overview</h2>
+
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <img src="static/images/figures/sagex.png" alt="OpenSage system overview figure" loading="lazy">
+          </div>
+        </div>
+
+        <div class="content has-text-justified">
+          <p>
+            OpenSage (Open Self-programming Agent Generation Engine) is an AI-centered agent framework designed to shift agent development from a
+            human-engineered, fixed paradigm to an AI-driven, self-programming one.
+            Instead of requiring developers to hand-design workflows, tool lists, and memory logic for each task, OpenSage provides a minimal scaffold
+            that lets the model <b>create</b> and <b>orchestrate</b> these components at runtime.
+          </p>
+          <p>
+            OpenSage is built around three core systems that strongly influence agent performance:
+          </p>
+          <ul>
+            <li><b>Self-generating agent topology</b>: the agent can dynamically create, run, and terminate sub-agents during execution, supporting both vertical decomposition (specialists per sub-task) and horizontal exploration (parallel plans + ensemble).</li>
+            <li><b>Dynamic tool synthesis and management</b>: the agent can write task-specific tools (e.g., scripts, generators, analyzers) and use a hierarchical tool organization with tool-specific sandboxing, state caching, and async/background execution.</li>
+            <li><b>Hierarchical, graph-based memory</b>: a short-term execution-memory graph plus a long-term knowledge graph, bridged by a dedicated memory agent that retrieves, stores, and updates high-signal knowledge at the point of need.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results (CyberGym-style leaderboard block) -->
+    <section class="section hero is-light" id="results">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Results</h2>
+            <div class="content has-text-justified">
+              <p>
+                OpenSage is evaluated on three SOTA benchmarks: <b>CyberGym</b>, <b>Terminal-Bench 2.0</b>, and <b>SWE-Bench Pro</b>.
+              </p>
+            </div>
+
+            <div class="table-container">
+              <table class="table is-striped is-fullwidth">
+                <thead>
+                  <tr>
+                    <th>Benchmark</th>
+                    <th>Agent</th>
+                    <th>Model</th>
+                    <th>ADK</th>
+                    <th>% Resolved</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>CyberGym</td>
+                    <td><b>SageAgent</b></td>
+                    <td>GPT-5 (medium)</td>
+                    <td><b>OpenSage</b></td>
+                    <td><b>60.2</b></td>
+                  </tr>
+                  <tr>
+                    <td>CyberGym</td>
+                    <td>Anthropic Agent</td>
+                    <td>Claude Opus 4.5</td>
+                    <td>Claude</td>
+                    <td>50.6</td>
+                  </tr>
+                  <tr>
+                    <td>CyberGym</td>
+                    <td>OpenHands</td>
+                    <td>GPT-5 (high)</td>
+                    <td>OpenHands</td>
+                    <td>39.4</td>
+                  </tr>
+                  <tr>
+                    <td>Terminal-Bench 2.0</td>
+                    <td><b>SageAgent</b></td>
+                    <td>Gemini 3 Pro</td>
+                    <td><b>OpenSage</b></td>
+                    <td><b>65.2 ± 2.0</b></td>
+                  </tr>
+                  <tr>
+                    <td>Terminal-Bench 2.0</td>
+                    <td>Ante</td>
+                    <td>Gemini 3 Pro</td>
+                    <td>-</td>
+                    <td>64.7 ± 2.7</td>
+                  </tr>
+                  <tr>
+                    <td>SWE-Bench Pro (Python subset)</td>
+                    <td><b>SageAgent</b></td>
+                    <td>Gemini 3 Flash</td>
+                    <td><b>OpenSage</b></td>
+                    <td><b>59.0</b></td>
+                  </tr>
+                  <tr>
+                    <td>SWE-Bench Pro (Python subset)</td>
+                    <td>SWE-agent</td>
+                    <td>Gemini 3 Flash</td>
+                    <td>-</td>
+                    <td>40.2</td>
+                  </tr>
+                  <tr>
+                    <td>SWE-Bench Pro (Python subset)</td>
+                    <td>Agentless</td>
+                    <td>Gemini 3 Flash</td>
+                    <td>-</td>
+                    <td>9.4</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Techniques -->
+    <section class="section" id="features">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Key Techniques</h2>
+
+        <div class="columns">
+          <div class="column">
+            <div class="box">
+              <h3 class="title is-5">Self-generating Agent Topology</h3>
+              <p class="has-text-grey">
+                Dynamic creation, execution, and termination of sub-agents during runtime; supports vertical decomposition and horizontal parallel exploration via agent ensemble.
+              </p>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="box">
+              <h3 class="title is-5">Dynamic Tool Synthesis</h3>
+              <p class="has-text-grey">
+                Tools are first-class, AI-writable artifacts with hierarchical organization, tool-specific sandboxing, state caching, and asynchronous/background execution.
+              </p>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="box">
+              <h3 class="title is-5">Hierarchical Memory</h3>
+              <p class="has-text-grey">
+                Graph-based short-term execution memory plus long-term knowledge graph, bridged by a dedicated memory agent for retrieval and updates.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Toolkit -->
+    <section class="section hero is-light" id="toolkit">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Domain-specific Toolkit</h2>
+            <div class="content has-text-justified">
+              <p>
+                OpenSage includes a toolkit spanning software engineering and security, covering both static and dynamic analysis.
+              </p>
+            </div>
+
+            <div class="table-container">
+              <table class="table is-striped is-fullwidth">
+                <thead>
+                  <tr>
+                    <th>Category</th>
+                    <th>Tool set</th>
+                    <th>Libraries</th>
+                    <th>Features</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Static</td>
+                    <td>Code analysis</td>
+                    <td>Joern, CodeQL</td>
+                    <td>CPG query, call graph analysis, dataflow slicing, semantic-aware search</td>
+                  </tr>
+                  <tr>
+                    <td>Dynamic</td>
+                    <td>Fuzzing</td>
+                    <td>AFL++, LibFuzzer</td>
+                    <td>Customizable seed generation, mutation, scoring</td>
+                  </tr>
+                  <tr>
+                    <td>Dynamic</td>
+                    <td>Coverage</td>
+                    <td>LLVM-Cov</td>
+                    <td>Query coverage with Neo4j, generate detailed reports</td>
+                  </tr>
+                  <tr>
+                    <td>Dynamic</td>
+                    <td>Debugger</td>
+                    <td>GDB, PDB</td>
+                    <td>Breakpoints, inspect states, trace execution, custom commands</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- More Key Findings -->
+    <section class="section" id="more-key-findings">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">More Key Findings</h2>
+        <div class="content has-text-justified">
+          <p>
+            In addition to the overall benchmark scores, our analyses provide more concrete evidence for
+            <b>why</b> OpenSage works: agent topology, tooling, and memory each contribute materially, and
+            the framework supports practical patterns like heterogeneous model collaboration.
+          </p>
+        </div>
+
+        <div class="finding-list">
+          <div class="finding-strip">
+            <div class="columns is-vcentered">
+              <div class="column is-4">
+                <img src="static/images/figures/cybergym_ablation_topo_and_tool.png" alt="CyberGym ablation: topology and tooling" loading="lazy">
+              </div>
+              <div class="column is-8 content has-text-justified">
+                <p><b>Topology + tooling are both necessary (CyberGym).</b> This plot quantifies how OpenSage’s key design choices affect end-to-end vulnerability reproduction on a 300-instance subset.</p>
+                <p>The left panel isolates <b>agent topology</b> effects (horizontal ensemble and vertical dynamic sub-agents). The right panel isolates the <b>tooling system</b> contribution versus a raw terminal and a no-feature baseline.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="finding-strip">
+            <div class="columns is-vcentered">
+              <div class="column is-4">
+                <img src="static/images/figures/cybergym_ablation_topo.png" alt="CyberGym ablation: topology" loading="lazy">
+              </div>
+              <div class="column is-8 content has-text-justified">
+                <p><b>Runtime-generated topology improves robustness (CyberGym).</b> Compares variants that disable horizontal ensemble or vertical dynamic sub-agent creation.</p>
+                <p>Result: disabling either capability reduces the resolved rate, showing both are useful in practice. In particular, removing dynamic sub-agents (vertical) hurts more because a single monolithic agent accumulates unrelated context and loses key details when summaries trigger.</p>
+                <p>Takeaway: OpenSage’s topology features are not “cosmetic”—they directly translate into higher end-to-end task success on long-horizon instances.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="finding-strip">
+            <div class="columns is-vcentered">
+              <div class="column is-4">
+                <img src="static/images/figures/cybergym_ablation_tool.png" alt="CyberGym ablation: tooling system" loading="lazy">
+              </div>
+              <div class="column is-8 content has-text-justified">
+                <p><b>Tooling is more than a shell (CyberGym).</b> Evaluates OpenSage’s tooling system versus replacing it with a raw terminal interface.</p>
+                <p>This highlights the benefit of dynamic tool synthesis plus tool/runtime management beyond “just having a bash tool”.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="finding-strip">
+            <div class="columns is-vcentered">
+              <div class="column is-4">
+                <img src="static/images/figures/swebenchpro_ablation.png" alt="SWE-Bench Pro ablation: memory designs" loading="lazy">
+              </div>
+              <div class="column is-8 content has-text-justified">
+                <p><b>Hierarchical memory helps long-horizon tasks (SWE-Bench Pro).</b> Compares OpenSage’s memory against no-memory and Mem0<sup>g</sup>.</p>
+                <p>Result: OpenSage’s hierarchical, agent-managed memory achieves the best performance among the compared settings, while no-memory drops noticeably—showing that long-horizon tasks benefit from explicitly storing and retrieving high-signal intermediate findings.</p>
+                <p>Takeaway: the gain comes from <b>structured</b> memory and <b>agentic</b> memory management (what to store, when to retrieve), not just adding a generic memory module.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="finding-strip">
+            <div class="columns is-vcentered">
+              <div class="column is-4">
+                <img src="static/images/figures/tb_large_small.png" alt="Terminal-Bench large-small collaboration results" loading="lazy">
+              </div>
+              <div class="column is-8 content has-text-justified">
+                <p><b>Heterogeneous model collaboration (Terminal-Bench).</b> Shows resolved rate and cost when combining a strong “planner/reviewer” with a cheaper “executor” via sub-agents.</p>
+                <p>This demonstrates OpenSage’s flexibility for cost/quality trade-offs by assigning different models to different roles.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BibTeX -->
+    <section class="section" id="BibTeX">
+      <div class="container is-max-desktop content">
+        <div class="bibtex-header">
+          <h2 class="title">Citation</h2>
+          <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+            <i class="fas fa-copy"></i>
+            <span class="copy-text">Copy</span>
+          </button>
+        </div>
+        <pre id="bibtex-code"><code>@misc{li2026opensage,
+  title={OpenSage: Self-programming Agent Generation Engine},
+  author={Hongwei Li and Zhun Wang and Qinrun Dai and Yuzhou Nie and Jinjun Peng and Ruitong Liu and Jingyang Zhang and Kaijie Zhu and Jingxuan He and Lun Wang and Yangruibo Ding and Yueqi Chen and Wenbo Guo and Dawn Song},
+  year={2026},
+  archivePrefix={arXiv},
+  primaryClass={cs.SE},
+}</code></pre>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-8">
+            <div class="content">
+              <p>
+                This page was built using the
+                <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.
+              </p>
+              <p>
+                Licensed under
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
+
