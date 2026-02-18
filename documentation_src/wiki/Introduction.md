@@ -39,15 +39,16 @@ OpenSage (Open Self-programming Agent Generation Engine) is an AI agent framewor
 
 OpenSage was designed to make self-programming agent development feel more like software development. It provides:
 
-1. **Isolation**: Each agent session has its own resources, preventing interference
-2. **Flexibility**: Easy to add new tools, sandboxes, and agents
-3. **Evolution**: Tools and agents can be created and modified at runtime
-4. **Integration**: Seamless integration with existing security analysis tools
-5. **Composability**: Build complex agents from simple components
-6. **Scalability**: Kubernetes support (under development)
+- **Isolation**: Each agent session has its own resources, preventing
+  interference
+- **Flexibility**: Easy to add new tools, sandboxes, and agents
+- **Evolution**: Tools and agents can be created and modified at runtime
+- **Integration**: Seamless integration with existing security analysis tools
+- **Composability**: Build complex agents from simple components
+- **Scalability**: Kubernetes support (under development)
 
 ## Next Steps
 
-- [Getting Started](Getting-Started.md) - Set up your development environment
-- [Core Components](Core-Components.md) - Understand the core building blocks
-- [Entry Points](Entry-Points.md) - Understand how to use OpenSage
+[Getting Started](Getting-Started.md) - Set up your development environment  
+[Core Components](Core-Components.md) - Understand the core building blocks  
+[Entry Points](Entry-Points.md) - Understand how to use OpenSage  

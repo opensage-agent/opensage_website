@@ -46,4 +46,4 @@ logger.info("Operation started", extra={"session_id": session_id})
 
 ## See Also
 
-- [Best Practices](Best-Practices.md) - Development best practices
+[Best Practices](Best-Practices.md) - Development best practices  

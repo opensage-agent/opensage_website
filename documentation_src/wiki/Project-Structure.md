@@ -59,5 +59,5 @@ OpenSage/
 
 ## See Also
 
-- [Core Components](Core-Components.md) - Component details
-- [Development Guides](Development-Guides.md) - How to add to the codebase
+[Core Components](Core-Components.md) - Component details  
+[Development Guides](Development-Guides.md) - How to add to the codebase  

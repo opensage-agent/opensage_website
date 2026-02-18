@@ -62,7 +62,7 @@ uv run opensage dependency-check
 OpenSage agents can use Python tools, filesystem-discovered Skills, and MCP
 toolsets.
 
-- [Adding a New Tool](Adding-Tools.md): How to add new tools/skills/toolsets.
+[Adding a New Tool](Adding-Tools.md): How to add new tools/skills/toolsets.  
 
 ## Creating Your Own Agent
 
@@ -141,19 +141,19 @@ def mk_agent(
 The OpenSage base agent extends ADK’s `LlmAgent` and adds OpenSage-specific
 capabilities. The most commonly used fields are:
 
-- **`name` / `description`**: identify the agent in logs and the UI.
-- **`model`**: the LLM backend for reasoning.
-- **`instruction`**: system instruction/policy for the agent.
-- **`tools`**: Python tools and toolsets (including dynamic sub-agent tools).
-- **`sub_agents`**: static sub-agents you attach at construction time.
-- **`enabled_skills`**: which filesystem Skills under `bash_tools/` are exposed.
-  - `None`: enable no Skills
-  - `"all"` / `["all"]`: enable only top-level Skills
-  - `List[str]`: prefix allowlist (e.g. `"retrieval"` or `"static_analysis/search-function"`)
-- **`enable_memory_management`**: enables a dedicated **memory management sub-agent**
-  (often exposed as a `memory_management_agent` tool) that mediates interactions
-  with short-term (session history/trace) and long-term (Neo4j graph memory).
-- **`tool_combos`** (optional): group multi-step tool workflows into a single callable tool.
+**`name` / `description`**: identify the agent in logs and the UI.  
+**`model`**: the LLM backend for reasoning.  
+**`instruction`**: system instruction/policy for the agent.  
+**`tools`**: Python tools and toolsets (including dynamic sub-agent tools).  
+**`sub_agents`**: static sub-agents you attach at construction time.  
+**`enabled_skills`**: which filesystem Skills under `bash_tools/` are exposed.  
+`None`: enable no Skills  
+`"all"` / `["all"]`: enable only top-level Skills  
+`List[str]`: prefix allowlist (e.g. `"retrieval"` or `"static_analysis/search-function"`)  
+**`enable_memory_management`**: enables a dedicated **memory management sub-agent**
+(often exposed as a `memory_management_agent` tool) that mediates interactions
+with short-term (session history/trace) and long-term (Neo4j graph memory).  
+**`tool_combos`** (optional): group multi-step tool workflows into a single callable tool.  
 
 ### 4) Configuration 
 
@@ -190,7 +190,7 @@ See the full field reference in [Configuration](Configuration.md).
 
 **Enable memory agent**
 
-- In `agent.py`: set `enable_memory_management=True`.
+In `agent.py`: set `enable_memory_management=True`.  
 
 **Enable dynamic sub-agents**
 
@@ -207,11 +207,11 @@ in your TOML configuration (see [Configuration](Configuration.md)).
 The repo includes small “feature agents” used in integration tests. Use them as
 starting points:
 
-- `examples/agents_with_features/sample_dynamic_subagent/`
-- `examples/agents_with_features/sample_agent_ensemble/`
-- `examples/agents_with_features/sample_summarization/`
-- `examples/agents_with_features/sample_neo4j_logging/`
-- `examples/agents_with_features/sample_tool_combo/`
+`examples/agents_with_features/sample_dynamic_subagent/`  
+`examples/agents_with_features/sample_agent_ensemble/`  
+`examples/agents_with_features/sample_summarization/`  
+`examples/agents_with_features/sample_neo4j_logging/`  
+`examples/agents_with_features/sample_tool_combo/`  
 
 Run one in the web UI by pointing `--agent` to the example directory and
 `--config` to the config file shipped alongside it.
@@ -220,9 +220,9 @@ Run one in the web UI by pointing `--agent` to the example directory and
 
 OpenSage supports three tool types you can enable in your agent:
 
-1. **Python tools** (callable functions)
-2. **Agent Skills** (bash/Python scripts discovered from `bash_tools/`)
-3. **MCP toolsets** (external services exposed via MCP)
+**Python tools** (callable functions)  
+**Agent Skills** (bash/Python scripts discovered from `bash_tools/`)  
+**MCP toolsets** (external services exposed via MCP)  
 
 ### 1) Python tools
 
@@ -281,9 +281,9 @@ main
 
 Enable Skills using `enabled_skills` on the base agent:
 
-- `None`: enable no Skills
-- `"all"` / `["all"]`: enable only top-level Skills (`<root>/*/SKILL.md`)
-- `List[str]`: prefix allowlist (e.g. `"retrieval"` or `"static_analysis/search-function"`)
+`None`: enable no Skills  
+`"all"` / `["all"]`: enable only top-level Skills (`<root>/*/SKILL.md`)  
+`List[str]`: prefix allowlist (e.g. `"retrieval"` or `"static_analysis/search-function"`)  
 
 Example:
 
@@ -333,5 +333,5 @@ MCP service endpoints are configured in TOML (host/port). See
 
 ## Next Steps
 
-- [Project Structure](Project-Structure.md) - Understand the codebase structure
-- [Development Guides](Development-Guides.md) - Start developing
+[Project Structure](Project-Structure.md) - Understand the codebase structure  
+[Development Guides](Development-Guides.md) - Start developing  

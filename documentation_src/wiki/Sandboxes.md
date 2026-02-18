@@ -110,5 +110,5 @@ image = "ubuntu:22.04"
 
 ## See Also
 
-- [Core Components](Core-Components.md) - Sandbox system details
-- [Development Guides](Development-Guides.md) - Other development guides
+[Core Components](Core-Components.md) - Sandbox system details  
+[Development Guides](Development-Guides.md) - Other development guides  

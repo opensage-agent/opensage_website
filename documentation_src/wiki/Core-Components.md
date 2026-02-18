@@ -16,9 +16,8 @@ The central manager for all session-specific resources.
 
 **Key Files:**
 
-- `opensage.session.session`
-- `opensage.session.dynamic_agent_manager`
-- `opensage.session.sandbox_manager`
+`opensage.session.session`, `opensage.session.dynamic_agent_manager`,
+`opensage.session.sandbox_manager`
 
 ## 2. Agent
 
@@ -33,7 +32,7 @@ Extended ADK agent with security-focused features.
 
 **Key Files:**
 
-- Agent implementation lives under the `opensage.agents` namespace.
+Agent implementation lives under the `opensage.agents` namespace.
 
 ## 3. Sandbox System
 
@@ -50,10 +49,8 @@ Isolated execution environments for security analysis.
 
 **Key Files:**
 
-- `opensage.sandbox.base_sandbox`
-- `opensage.sandbox.native_docker_sandbox`
-- `opensage.sandbox.k8s_sandbox`
-- `opensage.sandbox.initializers`
+`opensage.sandbox.base_sandbox`, `opensage.sandbox.native_docker_sandbox`,
+`opensage.sandbox.k8s_sandbox`, `opensage.sandbox.initializers`
 
 **Docs:**
 
@@ -67,8 +64,7 @@ TOML-based configuration with template variable expansion.
 
 **Key Files:**
 
-- `opensage.config.config_dataclass`
-- `opensage.templates.configs.default_config`
+`opensage.config.config_dataclass`, `opensage.templates.configs.default_config`
 
 **Docs:**
 
@@ -76,19 +72,25 @@ TOML-based configuration with template variable expansion.
 
 ## 5. Tools
 
-Collection of security analysis tools.
+Tools are not only security-specific. OpenSage tools typically come from:
+
+- **Skills (`bash_tools/`)**: filesystem-discovered bash/Python scripts described
+  by `SKILL.md` and executed in sandboxes.
+- **Python tools (`toolbox/`)**: Python callables and wrappers (often orchestrate
+  skills, sandboxes, storage, and MCP toolsets).
+- **MCP toolsets**: external services exposed via MCP (commonly SSE).
 
 **Tool Categories:**
 
+- Skills: retrieval/search, editing utilities, submissions, etc.
 - Static Analysis: Joern, CodeQL queries
-- Dynamic Analysis: Fuzzing, debugging
-- Coverage: LLVM coverage tools
-- Retrieval: Code search and symbol lookup
-- Evaluation: PoC submission and validation
+- Dynamic Analysis: fuzzing, debugging
+- Coverage: coverage collection and reporting
+- Evaluation: benchmark execution and submission helpers
 
 **Key Files:**
 
-- `opensage.toolbox`
+`src/opensage/bash_tools/`, `opensage.toolbox`
 
 **Docs:**
 

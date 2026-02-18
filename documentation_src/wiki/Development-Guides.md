@@ -27,6 +27,6 @@ To add features to the base agent:
 
 ## See Also
 
-- [Best Practices](Best-Practices.md) - Best practices for development
-- [Tools](Getting-Started.md#tools) - Tool types and patterns
-- [Testing Debugging](Testing-Debugging.md) - Testing and debugging guide
+[Best Practices](Best-Practices.md) - Best practices for development  
+[Tools](Getting-Started.md#tools) - Tool types and patterns  
+[Testing Debugging](Testing-Debugging.md) - Testing and debugging guide  

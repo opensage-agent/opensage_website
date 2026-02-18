@@ -301,56 +301,60 @@ eval.run()  # or eval.run_debug() for debugging
 
 Each evaluation sample goes through the following lifecycle:
 
-1. **Task Creation** (`_create_task()`)
-   - Convert dataset sample to `EvaluationTask`
-   - Extract task ID, prompt, paths, etc.
+### 1) Task creation (`_create_task()`)
 
-2. **Environment Preparation** (`_prepare_environment()`)
-   - Initialize OpenSage session
-   - Load/launch sandboxes
-   - Set up Neo4j (if enabled)
-   - Load cached sandbox states (if `use_cache=True`)
+- Convert a dataset sample into an `EvaluationTask`.
+- Extract task ID, prompt, and any task-specific paths/metadata.
 
-3. **Agent Preparation** (`_prepare_agent()`)
-   - Load `mk_agent` function from `agent_dir`
-   - Create agent instance
-   - Configure model (if `use_config_model=True`)
+### 2) Environment preparation (`_prepare_environment()`)
 
-4. **Agent Execution** (`_run_agent()`)
-   - Send prompt to agent
-   - Run agent with configured limits
-   - Track LLM calls, costs, etc.
-   - Handle `run_until_explicit_finish` loop
+- Create/initialize the OpenSage session for the task.
+- Launch and initialize required sandbox containers.
+- Set up Neo4j (if enabled).
+- Restore cached sandbox state (if `use_cache=True`).
 
-5. **Output Collection** (`_collect_outputs()`)
-   - Export sandbox outputs (if `output_dir_in_sandbox` specified)
-   - Export Neo4j database
-   - Save session trace
-   - Calculate cost information
+### 3) Agent preparation (`_prepare_agent()`)
 
-6. **Cleanup**
-   - Clean up sandboxes
-   - Close sessions
-   - Save error information (if failed)
+- Load the `mk_agent` factory from `agent_dir`.
+- Create the agent instance for this task/session.
+- Configure the model (if `use_config_model=True`).
+
+### 4) Agent execution (`_run_agent()`)
+
+- Send the prompt to the agent.
+- Run with configured limits (LLM calls, timeouts, etc.).
+- Handle the `run_until_explicit_finish` loop (if enabled).
+
+### 5) Output collection (`_collect_outputs()`)
+
+- Export sandbox outputs (if `output_dir_in_sandbox` is configured).
+- Export Neo4j database (if enabled).
+- Save session trace and cost information.
+
+### 6) Cleanup
+
+- Stop/clean up sandboxes.
+- Close sessions.
+- Persist error information for failed samples.
 
 ## Key Methods to Override
 
 ### Required Abstract Methods
 
-- `_get_sample_id(sample: dict) -> str`: Extract unique task ID
-- `_get_user_msg_first(sample: dict) -> str`: Extract initial prompt
+`_get_sample_id(sample: dict) -> str`: Extract unique task ID  
+`_get_user_msg_first(sample: dict) -> str`: Extract initial prompt
 
 ### Optional Methods (with Defaults)
 
-- `_get_dataset() -> datasets.Dataset`: Load and filter dataset
-- `_create_task(sample: dict) -> EvaluationTask`: Create task instance
-- `_get_input_data_path(sample: dict) -> str`: Input data directory
-- `_get_cache_dir(sample: dict) -> str`: Cache directory
-- `_get_output_dir_in_sandbox(sample: dict) -> str | tuple | None`: Output dirs to export
-- `_prepare_general_env() -> None`: Setup shared across all samples
-- `_before_initialize_hooks(session, task) -> None`: Hooks before sandbox init
-- `customized_modify_and_save_results(results, failed_samples, mode) -> None`: Post-processing
-- `evaluate() -> None`: Final evaluation and metrics
+`_get_dataset() -> datasets.Dataset`: Load and filter dataset  
+`_create_task(sample: dict) -> EvaluationTask`: Create task instance  
+`_get_input_data_path(sample: dict) -> str`: Input data directory  
+`_get_cache_dir(sample: dict) -> str`: Cache directory  
+`_get_output_dir_in_sandbox(sample: dict) -> str | tuple | None`: Output dirs to export  
+`_prepare_general_env() -> None`: Setup shared across all samples  
+`_before_initialize_hooks(session, task) -> None`: Hooks before sandbox init  
+`customized_modify_and_save_results(results, failed_samples, mode) -> None`: Post-processing  
+`evaluate() -> None`: Final evaluation and metrics
 
 ## Output Structure
 
@@ -398,13 +402,13 @@ Key configuration options available in `Evaluation`:
 
 See existing evaluations for reference:
 
-- `src/opensage/evaluations/cybergym/__init__.py` - Base class of evaluation
-- `src/opensage/evaluations/cybergym/cybergym_static.py` - Full-featured evaluation
-- `src/opensage/evaluations/mock_debug/mock_debug_evaluation.py` - Minimal example
-- `src/opensage/evaluations/secodeplt/vul_detection.py` - Another example
+`src/opensage/evaluations/cybergym/__init__.py` - Base class of evaluation  
+`src/opensage/evaluations/cybergym/cybergym_static.py` - Full-featured evaluation  
+`src/opensage/evaluations/mock_debug/mock_debug_evaluation.py` - Minimal example  
+`src/opensage/evaluations/secodeplt/vul_detection.py` - Another example  
 
 ## See Also
 
-- [Development Guides](Development-Guides.md) - Other development guides
-- [Testing Debugging](Testing-Debugging.md) - Testing evaluations
-- `src/opensage/evaluations/__init__.py` - Base Evaluation class implementation
+[Development Guides](Development-Guides.md) - Other development guides  
+[Testing Debugging](Testing-Debugging.md) - Testing evaluations  
+`src/opensage/evaluations/__init__.py` - Base Evaluation class implementation  

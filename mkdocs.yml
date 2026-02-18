@@ -89,9 +89,10 @@ extra_css:
 nav:
   - Home: index.md
   - User Guide:
-    - Introduction: Introduction.md
-    - Getting Started: Getting-Started.md
-    - Project Structure: Project-Structure.md
+    - Getting Started:
+      - Introduction: Introduction.md
+      - Getting Started: Getting-Started.md
+      - Project Structure: Project-Structure.md
     - Entry Points:
       - Overview: Entry-Points.md
       - OpenSage Web Entry: OpenSage-Web-Entry.md
@@ -101,14 +102,20 @@ nav:
       - Testing & Debugging: Testing-Debugging.md
     - Configuration: Configuration.md
   - Developer Guide:
-    - Development Guides: Development-Guides.md
-    - Core Components: Core-Components.md
-    - Adding Tools: Adding-Tools.md
-    - Adding a Evaluation Benchmark: Adding-Evaluations.md
-    - Sandboxes:
-      - Sandbox System Guide: Sandboxes.md
-      - Adding a sandbox: Adding-a-Sandbox.md
-      - Adding a new sandbox backend: Adding-a-New-Sandbox-Backend.md
+    - Core:
+      - Development Guides: Development-Guides.md
+      - Core Components: Core-Components.md
+    - Entry points:
+      - Entry-point walkthroughs:
+        - opensage web: OpenSage-Web-Workflow.md
+        - evaluations: Evaluation-Workflow.md
+    - Extending:
+      - Adding Tools: Adding-Tools.md
+      - Adding a Evaluation Benchmark: Adding-Evaluations.md
+      - Sandboxes:
+        - Sandbox System Guide: Sandboxes.md
+        - Adding a sandbox: Adding-a-Sandbox.md
+        - Adding a new sandbox backend: Adding-a-New-Sandbox-Backend.md
   - Benchmarking:
     - Overview: Benchmarking.md
   - CLI Reference:

@@ -56,5 +56,5 @@
 
 ## See Also
 
-- [Tools](Getting-Started.md#tools) - Tool types and patterns
-- [Contributing](Contributing.md) - Contribution guidelines
+[Tools](Getting-Started.md#tools) - Tool types and patterns  
+[Contributing](Contributing.md) - Contribution guidelines  

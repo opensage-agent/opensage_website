@@ -27,5 +27,5 @@ refactor(component): Description
 
 ## See Also
 
-- [Best Practices](Best-Practices.md) - Development best practices
-- [Development Guides](Development-Guides.md) - How to extend the framework
+[Best Practices](Best-Practices.md) - Development best practices  
+[Development Guides](Development-Guides.md) - How to extend the framework  
