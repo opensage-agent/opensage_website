@@ -69,7 +69,7 @@ the corresponding features.
 ### Step 2: Optional Neo4j Logging Setup
 
 If `--neo4j_logging` flag is provided:
-1. Imports `enable_neo4j_logging` from `<package>.features.agent_history_tracker`
+1. Imports `enable_neo4j_logging` from `opensage.features.agent_history_tracker`
 2. Enables Neo4j logging via monkey patches
 3. This allows event logging to Neo4j for analysis
 

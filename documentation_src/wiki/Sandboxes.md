@@ -105,7 +105,7 @@ Initializers add specific functionality to sandboxes (e.g., Neo4j, Joern, debugg
 
 ## Steps
 
-1. Create initializer in `src/<package>/sandbox/initializers/`
+1. Create initializer in `src/opensage/sandbox/initializers/`
 2. Implement `SandboxInitializer` interface
 3. Add configuration in `config_dataclass.py`
 4. Update default config template
@@ -143,7 +143,7 @@ commands. Prefer `/app/.venv/bin/python ...`.
 ## Example
 
 ```python
-# src/<package>/sandbox/initializers/my_sandbox.py
+# src/opensage/sandbox/initializers/my_sandbox.py
 from .base import SandboxInitializer
 
 class MySandboxInitializer(SandboxInitializer):
@@ -169,6 +169,18 @@ image = "my_image:tag"
 2. `async_initialize()` is called
 3. Resources are set up
 4. Sandbox is ready for use
+
+## Skill Dependencies (bash_tools deps/install.sh)
+
+Skills under `bash_tools/` can ship optional dependency installers:
+
+- `deps/<sandbox_type>/install.sh` (sandbox-specific), and/or
+- `deps/install.sh` (generic)
+
+The execution location is declared in `SKILL.md` YAML frontmatter via
+`should_run_in_sandbox`. During sandbox initialization, enabled skill installers
+are executed best-effort and skipped on subsequent runs via a marker under
+`/shared`.
 
 ## See Also
 

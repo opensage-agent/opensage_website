@@ -32,17 +32,12 @@ This file summarizes significant changes to the OpenSage documentation.
    - Memory agent concept
    - Note: Feature is planned, placeholder documentation created
 
-5. **Enhanced Training Support Section**:
-   - Expanded Kubernetes-based rapid rollout details
-   - Enhanced integration details for AREL, VERL, and LLaMA Factory
-   - Added rationale for why OpenSage works well for training
-
-6. **Enhanced Security-Focused Customization Section**:
+5. **Enhanced Security-Focused Customization Section**:
    - Renamed to "Security-Focused System-Level Customization"
    - Added more detailed capabilities
    - Emphasized the system-level nature of customization
 
-7. **Updated Key Features List**:
+6. **Updated Key Features List**:
    - Added planned features with notes
    - Reorganized to match the selling points structure
 

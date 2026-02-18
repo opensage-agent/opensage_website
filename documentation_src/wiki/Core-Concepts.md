@@ -43,7 +43,7 @@ In OpenSage, tools are implemented as **Agent Skills** (bash scripts) or **MCP t
 Agent Skills are bash scripts organized in a structured directory format:
 
 ```
-src/<package>/bash_tools/
+src/opensage/bash_tools/
 └── category/
     └── tool-name/
         ├── SKILL.md          # Metadata and documentation

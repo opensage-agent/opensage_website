@@ -1,6 +1,7 @@
 # RL Framework Integration
 
-OpenSage provides seamless integration with RL frameworks (slime, verl, areal, etc.) for agent training and evaluation. This integration allows RL frameworks to use OpenSage agents as rollout systems.
+OpenSage provides integration with RL frameworks (slime, verl, areal, etc.). This
+integration allows those frameworks to use OpenSage agents as rollout systems.
 
 ## Overview
 
@@ -152,10 +153,10 @@ client = opensage.create("vul_agent", "secodeplt")
 
 # 2. Initialize session
 with client.init_session() as session:
-    # 3. Generate samples for training
-    for sample in training_samples:
+    # 3. Generate rollouts / samples
+    for sample in samples:
         result = await session.slime_generate(
-            args=training_args,
+            args=args,
             sample=sample,
             sampling_params=sampling_params
         )

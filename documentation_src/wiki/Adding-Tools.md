@@ -18,10 +18,10 @@ MCP (Model Context Protocol) toolsets provide integration with external services
 
 ### Directory Structure
 
-Create a skill directory under `src/<package>/bash_tools/`:
+Create a skill directory under `src/opensage/bash_tools/`:
 
 ```
-src/<package>/bash_tools/
+src/opensage/bash_tools/
 └── category/
     └── tool-name/
         ├── SKILL.md          # Tool metadata and documentation
@@ -31,7 +31,7 @@ src/<package>/bash_tools/
 
 **Example structure:**
 ```
-src/<package>/bash_tools/
+src/opensage/bash_tools/
 └── retrieval/
     └── grep/
         ├── SKILL.md
@@ -47,6 +47,7 @@ The `SKILL.md` file contains YAML frontmatter and markdown documentation:
 ---
 name: tool-name
 description: Brief description of what the tool does
+should_run_in_sandbox: main
 ---
 
 # Tool Name
@@ -104,6 +105,13 @@ main
 
 Default timeout: 60 seconds
 ```
+
+Notes:
+
+- `should_run_in_sandbox` is **required** for executable Skills (a Skill folder
+  that contains `scripts/*.sh` or `scripts/*.py`).
+- Use the Markdown section `## Requires Sandbox` for **dependency** sandboxes.
+  (Do not put `sandbox` / `sandboxes` fields in YAML frontmatter.)
 
 ### Parameter Types
 
@@ -181,6 +189,35 @@ Tools are automatically discovered from:
 - `~/.local/plugins/opensage/tools/` (user plugins)
 
 The framework scans these directories for `SKILL.md` files and loads them automatically.
+
+### enabled_skills (which skills get loaded)
+
+Agents can restrict which skills are available by setting `enabled_skills`:
+
+- `None`: load **no** skills
+- `"all"` / `["all"]`: load **only top-level** skills (`<root>/*/SKILL.md`)
+- `List[str]`: treat each entry as a **prefix allowlist** under the skill root
+  (e.g. `"fuzz"` loads all skills under `fuzz/`; `"fuzz/run-fuzzing-campaign"` loads
+  just that subtree)
+
+### Per-skill dependency installers (deps/install.sh)
+
+If a skill needs extra dependencies inside a sandbox, it can provide an installer:
+
+- `deps/<sandbox_type>/install.sh` (sandbox-specific), and/or
+- `deps/install.sh` (generic)
+
+To control which sandbox should run the installer, add YAML frontmatter to
+`SKILL.md`:
+
+```yaml
+---
+should_run_in_sandbox: main
+---
+```
+
+Installers are run during sandbox initialization (best-effort) and are only run
+once per session (subsequent runs are skipped via a marker under `/shared`).
 
 ## Creating an MCP Toolset
 

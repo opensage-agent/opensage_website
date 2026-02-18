@@ -19,6 +19,7 @@ src/opensage/bash_tools/
 ---
 name: my-tool
 description: Tool description
+should_run_in_sandbox: main
 ---
 
 # My Tool

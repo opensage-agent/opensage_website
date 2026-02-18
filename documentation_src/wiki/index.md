@@ -22,7 +22,7 @@ OpenSage (Open Self-programming Agent Generation Engine) is an AI agent framewor
 - [Entry Points](Entry-Points.md) - Overview of entry points
 - [OpenSage Web Entry](OpenSage-Web-Entry.md) - Interactive web UI workflow
 - [Evaluation Entry](Evaluation-Entry.md) - Batch evaluation workflow
-- [RL Integration](RL-Integration.md) - RL framework integration for agent training
+- [RL Integration](RL-Integration.md) - RL framework integration
 
 ### Core Topics
 - [Architecture](Architecture.md) - Architecture design

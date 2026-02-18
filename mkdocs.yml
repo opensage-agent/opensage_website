@@ -7,6 +7,11 @@ docs_dir: documentation_src/wiki
 # Output directory (generated static site)
 site_dir: documentation
 
+# Temporarily hide API reference pages from the build.
+exclude_docs:
+  - generated/api/*.md
+  - API-Reference.md
+
 # Repository information
 repo_url: https://github.com/OpenSage-ADK/OpenSage
 repo_name: OpenSage-ADK/OpenSage
@@ -41,7 +46,6 @@ theme:
 # Build-time hooks (generate docs automatically)
 hooks:
   - mkdocs_hooks/generate_opensage_cli_reference.py
-  - mkdocs_hooks/generate_opensage_api_reference.py
 
 # Plugins
 plugins:
@@ -107,14 +111,6 @@ nav:
   - Benchmarking:
     - Overview: Benchmarking.md
     - Adding Evaluations: Adding-Evaluations.md
-  - API Reference:
-    - Overview: API-Reference.md
-    - Session: generated/api/session.md
-    - Sandbox: generated/api/sandbox.md
-    - Memory: generated/api/memory.md
-    - Toolbox: generated/api/toolbox.md
-    - CLI: generated/api/cli.md
-    - Plugins: generated/api/plugins.md
   - CLI Reference:
     - Overview: CLI-Reference.md
     - opensage: generated/cli/opensage.md

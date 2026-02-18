@@ -38,7 +38,7 @@ uv run pre-commit install
 **CodeQL Setup (Optional):**
 ```bash
 # Download CodeQL bundle
-# Extract to: PROJECT_PATH/src/<package>/sandbox_scripts/codeql
+# Extract to: PROJECT_PATH/src/opensage/sandbox_scripts/codeql
 ```
 
 ## Verify Installation
@@ -78,7 +78,7 @@ uv venv --python 3.12
 and installs Python dependencies into that venv:
 
 ```bash
-uv pip install <package...>
+uv pip install <deps...>
 ```
 
 Because sandbox command execution is **non-persistent** (each command is a fresh
@@ -91,11 +91,11 @@ process), prefer calling the venv Python explicitly:
 
 - **main sandbox**
   - Requires `python3` and the Python package `neo4j`
-  - Image built from `src/<package>/templates/dockerfiles/main/Dockerfile`
+  - Image built from `src/opensage/templates/dockerfiles/main/Dockerfile`
 
 - **joern sandbox**
   - Requires `python3` and Python packages `httpx` + `websockets`
-  - Image built from `src/<package>/templates/dockerfiles/joern/Dockerfile`
+  - Image built from `src/opensage/templates/dockerfiles/joern/Dockerfile`
 
 ## See Also
 

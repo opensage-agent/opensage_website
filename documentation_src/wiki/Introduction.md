@@ -66,7 +66,7 @@ System supports:
 
 **Implementation:**
 - `DynamicAgentManager` manages agent lifecycle
-- `AigiseEnsembleManager` coordinates multi-agent execution
+- `OpenSageEnsembleManager` coordinates multi-agent execution
 - Agents can discover and call other agents dynamically
 
 ### 3. Memory as Manageable System Resource
@@ -84,19 +84,13 @@ Memory is organized as a graph structure:
 - **Edges** represent dependencies, causal relationships, or semantic relationships
 - Supports **graph queries and retrieval**
 
-**Memory Agent:**
-
-A dedicated memory agent (planned):
-- Decides **when to store** information
-- Determines **when to compress or discard** old information
-- Manages **when to retrieve** historical experience
-
 Memory is not passive context, but:
 - **Runtime resource** actively scheduled by agents
 - **First-class entity** in the system architecture
-
-> **Note**: Graph-structured memory and Memory Agent are planned features and
-> documentation will be added as these features are implemented.
+ 
+OpenSage includes a graph-based memory system backed by Neo4j (with search and
+update controllers + tool-facing APIs) so agents can store, retrieve, and evolve
+knowledge across a session.
 
 ### 4. Session-Based Resource Isolation
 
@@ -168,7 +162,7 @@ Instead, it's about:
 
 - **AI-written tools** as first-class system entities
 - **Runtime sub-agent creation** and dynamic agent topology
-- **Memory as manageable resource** (graph-structured, memory agent) - *planned*
+- **Memory as manageable resource** (graph-structured, Neo4j-backed)
 - **Session-based resource management** with complete isolation
 - **Multi-sandbox support** (Docker, Kubernetes)
 - **Dynamic tool loading** and runtime tool generation
@@ -196,7 +190,6 @@ OpenSage was designed to make self-programming agent development feel more like 
 - Code coverage analysis
 - Static code analysis (CPG generation)
 - Multi-agent workflows
-- Agent training and evaluation
 
 ## Next Steps
 

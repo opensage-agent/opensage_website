@@ -19,6 +19,7 @@
 
 - Create structured directory with `SKILL.md` and `scripts/` subdirectory
 - Document all parameters in `SKILL.md` with types and descriptions
+- Set `should_run_in_sandbox` in `SKILL.md` YAML frontmatter for executable skills
 - Specify sandbox requirements in `## Requires Sandbox` section
 - Return JSON output for structured results
 - Use proper exit codes (0 for success, non-zero for errors)

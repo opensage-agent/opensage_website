@@ -15,7 +15,7 @@ OpenSage uses TOML (Tom's Obvious, Minimal Language) format for configuration fi
 
 Configuration files are loaded in the following order:
 
-1. **Default Configuration**: `src/<package>/templates/configs/default_config.toml` (used when no config is specified)
+1. **Default Configuration**: `src/opensage/templates/configs/default_config.toml` (used when no config is specified)
 2. **Custom Configuration**: Path specified via `config_path` parameter when creating a session
 
 ## Configuration Structure
@@ -121,15 +121,15 @@ Configures the Neo4j graph database connection.
 ## Sandbox Images & Requirements (Practical Notes)
 
 Some sandboxes require Python tooling inside their Docker images. In the default
-configuration template (`src/<package>/templates/configs/default_config.toml`):
+configuration template (`src/opensage/templates/configs/default_config.toml`):
 
 - **`sandbox.sandboxes.main`**
-  - Built from `src/<package>/templates/dockerfiles/main/Dockerfile`
+  - Built from `src/opensage/templates/dockerfiles/main/Dockerfile`
   - Provides `python3` via `/app/.venv/bin/python`
-  - Installs Python package `neo4j` (used by `src/<package>/sandbox/initializers/main.py`)
+  - Installs Python package `neo4j` (used by `src/opensage/sandbox/initializers/main.py`)
 
 - **`sandbox.sandboxes.joern`**
-  - Built from `src/<package>/templates/dockerfiles/joern/Dockerfile`
+  - Built from `src/opensage/templates/dockerfiles/joern/Dockerfile`
   - Provides `python3` via `/app/.venv/bin/python`
   - Installs Python packages `httpx` and `websockets` (used by Joern query helper scripts)
 
@@ -557,7 +557,7 @@ sse_port = 1111
 ```python
 import opensage
 
-# Uses default config from src/<package>/templates/configs/default_config.toml
+# Uses default config from src/opensage/templates/configs/default_config.toml
 session = opensage.get_session("my_session")
 ```
 
