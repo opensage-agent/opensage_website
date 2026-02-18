@@ -2,102 +2,142 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://3rdn4Li.github.io/SAGE-X/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <lastmod>2026-02-18</lastmod>
+    </url>
+    <url>
+         <loc>https://3rdn4Li.github.io/SAGE-X/API-Reference/</loc>
+         <lastmod>2026-02-18</lastmod>
     </url>
     <url>
          <loc>https://3rdn4Li.github.io/SAGE-X/Adding-Evaluations/</loc>
-         <lastmod>2025-12-31</lastmod>
-    </url>
-    <url>
-         <loc>https://3rdn4Li.github.io/SAGE-X/Adding-Sandboxes/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <lastmod>2026-02-18</lastmod>
     </url>
     <url>
          <loc>https://3rdn4Li.github.io/SAGE-X/Adding-Tools/</loc>
-         <lastmod>2025-12-31</lastmod>
-    </url>
-    <url>
-         <loc>https://3rdn4Li.github.io/SAGE-X/Aigise-Web-Entry/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <lastmod>2026-02-18</lastmod>
     </url>
     <url>
          <loc>https://3rdn4Li.github.io/SAGE-X/Architecture/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <lastmod>2026-02-18</lastmod>
+    </url>
+    <url>
+         <loc>https://3rdn4Li.github.io/SAGE-X/Benchmarking/</loc>
+         <lastmod>2026-02-18</lastmod>
     </url>
     <url>
          <loc>https://3rdn4Li.github.io/SAGE-X/Best-Practices/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <lastmod>2026-02-18</lastmod>
     </url>
     <url>
          <loc>https://3rdn4Li.github.io/SAGE-X/CHANGES/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <lastmod>2026-02-18</lastmod>
+    </url>
+    <url>
+         <loc>https://3rdn4Li.github.io/SAGE-X/CLI-Reference/</loc>
+         <lastmod>2026-02-18</lastmod>
     </url>
     <url>
          <loc>https://3rdn4Li.github.io/SAGE-X/Common-Patterns/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <lastmod>2026-02-18</lastmod>
+    </url>
+    <url>
+         <loc>https://3rdn4Li.github.io/SAGE-X/Community/</loc>
+         <lastmod>2026-02-18</lastmod>
     </url>
     <url>
          <loc>https://3rdn4Li.github.io/SAGE-X/Configuration/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <lastmod>2026-02-18</lastmod>
     </url>
     <url>
          <loc>https://3rdn4Li.github.io/SAGE-X/Contributing/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <lastmod>2026-02-18</lastmod>
     </url>
     <url>
          <loc>https://3rdn4Li.github.io/SAGE-X/Core-Components/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <lastmod>2026-02-18</lastmod>
     </url>
     <url>
          <loc>https://3rdn4Li.github.io/SAGE-X/Core-Concepts/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <lastmod>2026-02-18</lastmod>
     </url>
     <url>
          <loc>https://3rdn4Li.github.io/SAGE-X/Development-Guides/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <lastmod>2026-02-18</lastmod>
     </url>
     <url>
          <loc>https://3rdn4Li.github.io/SAGE-X/Entry-Points/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <lastmod>2026-02-18</lastmod>
     </url>
     <url>
          <loc>https://3rdn4Li.github.io/SAGE-X/Evaluation-Entry/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <lastmod>2026-02-18</lastmod>
     </url>
     <url>
          <loc>https://3rdn4Li.github.io/SAGE-X/Getting-Started/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <lastmod>2026-02-18</lastmod>
     </url>
     <url>
          <loc>https://3rdn4Li.github.io/SAGE-X/Introduction/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <lastmod>2026-02-18</lastmod>
     </url>
     <url>
-         <loc>https://3rdn4Li.github.io/SAGE-X/Memory-System/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <loc>https://3rdn4Li.github.io/SAGE-X/OpenSage-Web-Entry/</loc>
+         <lastmod>2026-02-18</lastmod>
     </url>
     <url>
          <loc>https://3rdn4Li.github.io/SAGE-X/Project-Structure/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <lastmod>2026-02-18</lastmod>
     </url>
     <url>
          <loc>https://3rdn4Li.github.io/SAGE-X/RL-Integration/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <lastmod>2026-02-18</lastmod>
     </url>
     <url>
-         <loc>https://3rdn4Li.github.io/SAGE-X/System-Workflow/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <loc>https://3rdn4Li.github.io/SAGE-X/Sandboxes/</loc>
+         <lastmod>2026-02-18</lastmod>
     </url>
     <url>
          <loc>https://3rdn4Li.github.io/SAGE-X/Testing-Debugging/</loc>
-         <lastmod>2025-12-31</lastmod>
-    </url>
-    <url>
-         <loc>https://3rdn4Li.github.io/SAGE-X/Troubleshooting/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <lastmod>2026-02-18</lastmod>
     </url>
     <url>
          <loc>https://3rdn4Li.github.io/SAGE-X/_Sidebar/</loc>
-         <lastmod>2025-12-31</lastmod>
+         <lastmod>2026-02-18</lastmod>
+    </url>
+    <url>
+         <loc>https://3rdn4Li.github.io/SAGE-X/generated/api/cli/</loc>
+         <lastmod>2026-02-18</lastmod>
+    </url>
+    <url>
+         <loc>https://3rdn4Li.github.io/SAGE-X/generated/api/memory/</loc>
+         <lastmod>2026-02-18</lastmod>
+    </url>
+    <url>
+         <loc>https://3rdn4Li.github.io/SAGE-X/generated/api/plugins/</loc>
+         <lastmod>2026-02-18</lastmod>
+    </url>
+    <url>
+         <loc>https://3rdn4Li.github.io/SAGE-X/generated/api/sandbox/</loc>
+         <lastmod>2026-02-18</lastmod>
+    </url>
+    <url>
+         <loc>https://3rdn4Li.github.io/SAGE-X/generated/api/session/</loc>
+         <lastmod>2026-02-18</lastmod>
+    </url>
+    <url>
+         <loc>https://3rdn4Li.github.io/SAGE-X/generated/api/toolbox/</loc>
+         <lastmod>2026-02-18</lastmod>
+    </url>
+    <url>
+         <loc>https://3rdn4Li.github.io/SAGE-X/generated/cli/opensage-dependency-check/</loc>
+         <lastmod>2026-02-18</lastmod>
+    </url>
+    <url>
+         <loc>https://3rdn4Li.github.io/SAGE-X/generated/cli/opensage-web/</loc>
+         <lastmod>2026-02-18</lastmod>
+    </url>
+    <url>
+         <loc>https://3rdn4Li.github.io/SAGE-X/generated/cli/opensage/</loc>
+         <lastmod>2026-02-18</lastmod>
     </url>
 </urlset>

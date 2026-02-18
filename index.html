@@ -65,6 +65,9 @@
         <div class="container is-max-desktop">
           <div class="columns is-centered">
             <div class="column has-text-centered">
+              <div class="opensage-hero-logo">
+                <img src="static/opensage.svg" alt="OpenSage logo" loading="eager">
+              </div>
               <h1 class="title is-1 publication-title">OpenSage: Self-programming Agent Generation Engine</h1>
 
               <div class="is-size-6 publication-authors authors-muted">
@@ -109,7 +112,7 @@
                     </a>
                   </span>
                   <span class="link-block">
-                    <a href="https://github.com/AIgiSE/AIgiSE" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <a href="https://github.com/OpenSage-ADK/OpenSage" target="_blank" class="external-link button is-normal is-rounded is-dark">
                       <span class="icon"><i class="fab fa-github"></i></span>
                       <span>Code</span>
                     </a>
@@ -130,12 +133,14 @@
 
     <!-- Overview -->
     <section class="section" id="overview">
-      <div class="container is-max-desktop">
+      <div class="container is-max-widescreen">
         <h2 class="title is-3 has-text-centered">Overview</h2>
 
         <div class="columns is-centered">
-          <div class="column is-four-fifths">
-            <img src="static/images/figures/sagex.png" alt="OpenSage system overview figure" loading="lazy">
+          <div class="column is-full">
+            <figure class="overview-figure">
+              <img src="static/images/figures/sagex.png" alt="OpenSage system overview figure" loading="lazy">
+            </figure>
           </div>
         </div>
 
@@ -160,9 +165,9 @@
 
     <!-- Results (CyberGym-style leaderboard block) -->
     <section class="section hero is-light" id="results">
-      <div class="container is-max-desktop">
+      <div class="container is-max-widescreen">
         <div class="columns is-centered has-text-centered">
-          <div class="column is-four-fifths">
+          <div class="column is-full">
             <h2 class="title is-3">Results</h2>
             <div class="content has-text-justified">
               <p>
@@ -170,77 +175,9 @@
               </p>
             </div>
 
-            <div class="table-container">
-              <table class="table is-striped is-fullwidth">
-                <thead>
-                  <tr>
-                    <th>Benchmark</th>
-                    <th>Agent</th>
-                    <th>Model</th>
-                    <th>ADK</th>
-                    <th>% Resolved</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>CyberGym</td>
-                    <td><b>SageAgent</b></td>
-                    <td>GPT-5 (medium)</td>
-                    <td><b>OpenSage</b></td>
-                    <td><b>60.2</b></td>
-                  </tr>
-                  <tr>
-                    <td>CyberGym</td>
-                    <td>Anthropic Agent</td>
-                    <td>Claude Opus 4.5</td>
-                    <td>Claude</td>
-                    <td>50.6</td>
-                  </tr>
-                  <tr>
-                    <td>CyberGym</td>
-                    <td>OpenHands</td>
-                    <td>GPT-5 (high)</td>
-                    <td>OpenHands</td>
-                    <td>39.4</td>
-                  </tr>
-                  <tr>
-                    <td>Terminal-Bench 2.0</td>
-                    <td><b>SageAgent</b></td>
-                    <td>Gemini 3 Pro</td>
-                    <td><b>OpenSage</b></td>
-                    <td><b>65.2 ± 2.0</b></td>
-                  </tr>
-                  <tr>
-                    <td>Terminal-Bench 2.0</td>
-                    <td>Ante</td>
-                    <td>Gemini 3 Pro</td>
-                    <td>-</td>
-                    <td>64.7 ± 2.7</td>
-                  </tr>
-                  <tr>
-                    <td>SWE-Bench Pro (Python subset)</td>
-                    <td><b>SageAgent</b></td>
-                    <td>Gemini 3 Flash</td>
-                    <td><b>OpenSage</b></td>
-                    <td><b>59.0</b></td>
-                  </tr>
-                  <tr>
-                    <td>SWE-Bench Pro (Python subset)</td>
-                    <td>SWE-agent</td>
-                    <td>Gemini 3 Flash</td>
-                    <td>-</td>
-                    <td>40.2</td>
-                  </tr>
-                  <tr>
-                    <td>SWE-Bench Pro (Python subset)</td>
-                    <td>Agentless</td>
-                    <td>Gemini 3 Flash</td>
-                    <td>-</td>
-                    <td>9.4</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+            <figure class="results-figure">
+              <img src="static/images/figures/result_main.png" alt="Benchmark results on CyberGym, Terminal-Bench 2.0, and SWE-Bench Pro (Python): resolved rate (%) bar charts." loading="lazy">
+            </figure>
 
           </div>
         </div>
@@ -252,33 +189,52 @@
       <div class="container is-max-desktop">
         <h2 class="title is-3 has-text-centered">Key Techniques</h2>
 
-        <div class="columns">
-          <div class="column">
-            <div class="box">
+        <div class="columns is-multiline is-centered">
+          <div class="column is-6-tablet is-4-desktop">
+            <div class="box content">
               <h3 class="title is-5">Self-generating Agent Topology</h3>
-              <p class="has-text-grey">
-                Dynamic creation, execution, and termination of sub-agents during runtime; supports vertical decomposition and horizontal parallel exploration via agent ensemble.
-              </p>
+              <ul class="has-text-grey">
+                <li>Create/run/stop sub-agents at runtime</li>
+                <li>Vertical decomposition with specialist sub-agents</li>
+                <li>Horizontal parallel exploration via agent ensemble</li>
+              </ul>
             </div>
           </div>
 
-          <div class="column">
-            <div class="box">
+          <div class="column is-6-tablet is-4-desktop">
+            <div class="box content">
               <h3 class="title is-5">Dynamic Tool Synthesis</h3>
-              <p class="has-text-grey">
-                Tools are first-class, AI-writable artifacts with hierarchical organization, tool-specific sandboxing, state caching, and asynchronous/background execution.
-              </p>
+              <ul class="has-text-grey">
+                <li>AI-writable tools as first-class artifacts</li>
+                <li>Hierarchical organization for discovery at scale</li>
+                <li>Tool-specific sandboxing, caching, async execution</li>
+              </ul>
             </div>
           </div>
 
-          <div class="column">
-            <div class="box">
+          <div class="column is-6-tablet is-4-desktop">
+            <div class="box content">
               <h3 class="title is-5">Hierarchical Memory</h3>
-              <p class="has-text-grey">
-                Graph-based short-term execution memory plus long-term knowledge graph, bridged by a dedicated memory agent for retrieval and updates.
-              </p>
+              <ul class="has-text-grey">
+                <li>Graph-based short-term execution memory</li>
+                <li>Long-term knowledge graph for reusable insights</li>
+                <li>Memory agent for retrieval, updates, and compaction</li>
+              </ul>
             </div>
           </div>
+
+          <!--
+          <div class="column is-6-tablet is-4-desktop">
+            <div class="box content">
+              <h3 class="title is-5">Security Guardrails</h3>
+              <ul class="has-text-grey">
+                <li>Plug-in guardrail model for safety/policy checks</li>
+                <li>Review tool calls, code changes, and outputs before acting</li>
+                <li>Allow/deny/require-confirmation for high-risk actions</li>
+              </ul>
+            </div>
+          </div>
+          -->
         </div>
       </div>
     </section>
@@ -288,7 +244,7 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered has-text-centered">
           <div class="column is-four-fifths">
-            <h2 class="title is-3">Domain-specific Toolkit</h2>
+            <h2 class="title is-3">Domain-Specific Toolkit</h2>
             <div class="content has-text-justified">
               <p>
                 OpenSage includes a toolkit spanning software engineering and security, covering both static and dynamic analysis.
@@ -340,7 +296,7 @@
 
     <!-- More Key Findings -->
     <section class="section" id="more-key-findings">
-      <div class="container is-max-desktop">
+      <div class="container is-max-widescreen">
         <h2 class="title is-3 has-text-centered">More Key Findings</h2>
         <div class="content has-text-justified">
           <p>
@@ -353,10 +309,10 @@
         <div class="finding-list">
           <div class="finding-strip">
             <div class="columns is-vcentered">
-              <div class="column is-4">
+              <div class="column is-5-desktop is-12-tablet">
                 <img src="static/images/figures/cybergym_ablation_topo_and_tool.png" alt="CyberGym ablation: topology and tooling" loading="lazy">
               </div>
-              <div class="column is-8 content has-text-justified">
+              <div class="column is-7-desktop is-12-tablet content has-text-justified">
                 <p><b>Topology + tooling are both necessary (CyberGym).</b> This plot quantifies how OpenSage’s key design choices affect end-to-end vulnerability reproduction on a 300-instance subset.</p>
                 <p>The left panel isolates <b>agent topology</b> effects (horizontal ensemble and vertical dynamic sub-agents). The right panel isolates the <b>tooling system</b> contribution versus a raw terminal and a no-feature baseline.</p>
               </div>
@@ -365,23 +321,22 @@
 
           <div class="finding-strip">
             <div class="columns is-vcentered">
-              <div class="column is-4">
+              <div class="column is-5-desktop is-12-tablet">
                 <img src="static/images/figures/cybergym_ablation_topo.png" alt="CyberGym ablation: topology" loading="lazy">
               </div>
-              <div class="column is-8 content has-text-justified">
-                <p><b>Runtime-generated topology improves robustness (CyberGym).</b> Compares variants that disable horizontal ensemble or vertical dynamic sub-agent creation.</p>
-                <p>Result: disabling either capability reduces the resolved rate, showing both are useful in practice. In particular, removing dynamic sub-agents (vertical) hurts more because a single monolithic agent accumulates unrelated context and loses key details when summaries trigger.</p>
-                <p>Takeaway: OpenSage’s topology features are not “cosmetic”—they directly translate into higher end-to-end task success on long-horizon instances.</p>
+              <div class="column is-7-desktop is-12-tablet content has-text-justified">
+                <p><b>Topology improves performance (CyberGym).</b> Compares variants that disable horizontal ensemble or vertical dynamic sub-agent creation.</p>
+                <p>Removing either capability reduces the resolved rate, while disabling all OpenSage features drops much further. Horizontal ensemble improves performance via parallel exploration, while vertical dynamic sub-agents help by decomposing tasks and isolating context (reducing context overflow and information loss when summarization triggers).</p>
               </div>
             </div>
           </div>
 
           <div class="finding-strip">
             <div class="columns is-vcentered">
-              <div class="column is-4">
+              <div class="column is-5-desktop is-12-tablet">
                 <img src="static/images/figures/cybergym_ablation_tool.png" alt="CyberGym ablation: tooling system" loading="lazy">
               </div>
-              <div class="column is-8 content has-text-justified">
+              <div class="column is-7-desktop is-12-tablet content has-text-justified">
                 <p><b>Tooling is more than a shell (CyberGym).</b> Evaluates OpenSage’s tooling system versus replacing it with a raw terminal interface.</p>
                 <p>This highlights the benefit of dynamic tool synthesis plus tool/runtime management beyond “just having a bash tool”.</p>
               </div>
@@ -390,23 +345,22 @@
 
           <div class="finding-strip">
             <div class="columns is-vcentered">
-              <div class="column is-4">
+              <div class="column is-5-desktop is-12-tablet">
                 <img src="static/images/figures/swebenchpro_ablation.png" alt="SWE-Bench Pro ablation: memory designs" loading="lazy">
               </div>
-              <div class="column is-8 content has-text-justified">
-                <p><b>Hierarchical memory helps long-horizon tasks (SWE-Bench Pro).</b> Compares OpenSage’s memory against no-memory and Mem0<sup>g</sup>.</p>
-                <p>Result: OpenSage’s hierarchical, agent-managed memory achieves the best performance among the compared settings, while no-memory drops noticeably—showing that long-horizon tasks benefit from explicitly storing and retrieving high-signal intermediate findings.</p>
-                <p>Takeaway: the gain comes from <b>structured</b> memory and <b>agentic</b> memory management (what to store, when to retrieve), not just adding a generic memory module.</p>
+              <div class="column is-7-desktop is-12-tablet content has-text-justified">
+                <p><b>Memory helps long-horizon tasks (SWE-Bench Pro).</b> Compares OpenSage’s memory against no-memory and Mem0<sup>g</sup>.</p>
+                <p>OpenSage’s hierarchical, agent-managed memory achieves the best performance among the compared baselines. Long-horizon tasks benefit from explicitly storing high-signal intermediate findings and retrieving them at the point of need, especially after history compaction or when revisiting earlier decisions.</p>
               </div>
             </div>
           </div>
 
           <div class="finding-strip">
             <div class="columns is-vcentered">
-              <div class="column is-4">
+              <div class="column is-5-desktop is-12-tablet">
                 <img src="static/images/figures/tb_large_small.png" alt="Terminal-Bench large-small collaboration results" loading="lazy">
               </div>
-              <div class="column is-8 content has-text-justified">
+              <div class="column is-7-desktop is-12-tablet content has-text-justified">
                 <p><b>Heterogeneous model collaboration (Terminal-Bench).</b> Shows resolved rate and cost when combining a strong “planner/reviewer” with a cheaper “executor” via sub-agents.</p>
                 <p>This demonstrates OpenSage’s flexibility for cost/quality trade-offs by assigning different models to different roles.</p>
               </div>
