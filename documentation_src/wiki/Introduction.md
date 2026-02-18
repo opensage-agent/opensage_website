@@ -22,41 +22,12 @@ OpenSage (Open Self-programming Agent Generation Engine) is an AI agent framewor
 
 ## Key Advantages
 
-### 1. AI-Written Tools as First-Class System Entities
+### 1. Dynamic Tool Synthesis
 
-**Redefining Tools in Agent Development 2.0:**
-
-In traditional frameworks, tools are:
-- Fixed API lists
-- Pre-registered function interfaces defined by humans
-- Static capabilities that agents can only call
-
-In OpenSage (Agent Development 2.0), tools are:
-- **Programmatic entities** that agents can write, modify, and evolve
-- **Runtime-generated capabilities** that adapt to current tasks
-- **First-class system entities** with lifecycle management
-
-**Supported Capabilities:**
-
-OpenSage natively supports:
-- **Agent-generated tools**: Agents can create new tools (bash scripts, analysis scripts, debugging tools)
-- **Tool modification**: Agents can modify existing tools to adapt to current tasks
-- **Runtime tool management**:
-  - Multiple bash sessions for parallel execution
-  - Tool-specific sandboxes (especially for long-running tools like fuzzers)
-  - Tool state persistence and restoration, enabling cross-task reuse
-
-**Design Value:**
-
-This design enables:
-- Agents can "invent new capabilities" rather than just calling existing ones
-- Tool sets evolve with tasks, not statically bound
-- System has continuous self-expansion potential
-
-**Implementation:**
-- `ToolLoader` dynamically discovers tools from `src/aigise/bash_tools/`
-- Tools structured as "Skills" with metadata (`SKILL.md`)
-- `bash_tool` enables execution of arbitrary commands, allowing agents to create new tools
+In OpenSage, tools are not limited to a fixed, human-curated list. During
+execution, the agent can create task-specific tools (e.g., scripts, analyzers,
+generators) using meta-tools that provide primitives for tool synthesis, and
+then run those tools inside managed sandbox environments.
 
 ### 2. Runtime-Generated Sub-Agents & Dynamic Agent Topology
 

@@ -68,9 +68,27 @@ body {
   margin-bottom: 0.75rem;
 }
 
+.publication-authors sup {
+  margin-left: 0.18em;
+  display: inline-block;
+}
+
+.author-email {
+  margin-left: 0.35em;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9em;
+  vertical-align: baseline;
+}
+
+.author-email:hover {
+  color: var(--primary-color);
+}
+
 .affils-muted {
   color: var(--text-secondary);
   margin-bottom: 0.25rem;
+  font-size: 0.9rem;
 }
 
 .hero-tagline {
@@ -321,13 +339,50 @@ body {
   background: #ffffff;
 }
 
-/* Results: replace dense tables with a readable figure (SVG). */
-.results-figure {
-  margin: 1rem 0 0.5rem;
+/* Feature Matrix: Table 1 image */
+.feature-matrix-block {
+  margin: 0 auto 1.25rem;
+  max-width: 740px;
+}
+
+.figure-block {
+  max-width: 740px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.figure-lead {
+  margin: 0 0 0.75rem;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.feature-matrix-figure {
+  margin: 0 auto;
   padding: 14px 16px;
   background: #ffffff;
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-lg);
+  max-width: 740px;
+}
+
+.feature-matrix-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  max-width: none;
+}
+
+/* Results: replace dense tables with a readable figure (SVG). */
+.results-figure {
+  margin: 0 auto;
+  padding: 14px 16px;
+  background: #ffffff;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+  max-width: 740px;
 }
 
 .results-figure img {
@@ -335,7 +390,7 @@ body {
   height: auto;
   display: block;
   margin: 0 auto;
-  max-width: 840px;
+  max-width: none;
 }
 
 .results-carousel {
@@ -415,6 +470,11 @@ body {
   font-style: italic;
 }
 
+.corresponding-authors {
+  margin-top: 0.25rem;
+  color: var(--text-secondary);
+}
+
 /* More Key Findings: horizontal strips */
 .finding-strip {
   background: var(--background-primary);
@@ -453,6 +513,12 @@ body {
   height: 3px;
   background: var(--gradient-accent);
   border-radius: 2px;
+}
+
+@media (min-width: 1024px) {
+  #features .box .title.is-5 {
+    font-size: 1.18rem;
+  }
 }
 
 /* Content Improvements */

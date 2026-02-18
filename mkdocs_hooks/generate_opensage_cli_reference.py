@@ -1,4 +1,4 @@
-"""MkDocs hook: generate CLI reference pages for AIgiSE.
+"""MkDocs hook: generate CLI reference pages for OpenSage.
 
 This keeps the docs site in sync with the actual CLI help text without manual
 copy/paste.
@@ -31,7 +31,7 @@ def _extract_help_text(raw: str) -> str:
 
 
 def _run_help(repo_root: Path, *args: str) -> str:
-  """Run `opensage ... --help` via uv in the AIgiSE project."""
+  """Run `opensage ... --help` via uv."""
   cmd = [
     "uv",
     "run",

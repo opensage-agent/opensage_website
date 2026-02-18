@@ -177,8 +177,8 @@ main, fuzz
 ### Automatic Discovery
 
 Tools are automatically discovered from:
-- `src/<package>/bash_tools/` (built-in tools)
-- `~/.local/plugins/<product>/tools/` (user plugins)
+- `src/opensage/bash_tools/` (built-in tools)
+- `~/.local/plugins/opensage/tools/` (user plugins)
 
 The framework scans these directories for `SKILL.md` files and loads them automatically.
 
@@ -187,23 +187,23 @@ The framework scans these directories for `SKILL.md` files and loads them automa
 MCP toolsets are created via Python functions that return `MCPToolset` instances:
 
 ```python
-# src/<package>/toolbox/category/get_toolset.py
+# src/opensage/toolbox/category/get_toolset.py
 from google.adk.tools.mcp_tool.mcp_toolset import MCPToolset, SseConnectionParams
-from <package>.toolbox.decorators import requires_sandbox, safe_tool_execution
-from <package>.utils.agent_utils import get_mcp_url_from_session_id
+from opensage.toolbox.decorators import requires_sandbox, safe_tool_execution
+from opensage.utils.agent_utils import get_mcp_url_from_session_id
 
 @safe_tool_execution
 @requires_sandbox("gdb_mcp")
-def get_toolset(aigise_session_id: str) -> MCPToolset:
+def get_toolset(session_id: str) -> MCPToolset:
     """Create MCPToolset with GDB MCP server running in Docker container.
 
     Args:
-        aigise_session_id: Shared session ID for session-based management
+        session_id: Shared session ID for session-based management
 
     Returns:
         MCPToolset connected to GDB MCP server
     """
-    url = get_mcp_url_from_session_id("gdb_mcp", aigise_session_id)
+    url = get_mcp_url_from_session_id("gdb_mcp", session_id)
     mcp_toolset = MCPToolset(connection_params=SseConnectionParams(url=url))
     return mcp_toolset
 ```
@@ -225,9 +225,9 @@ Agent Skills are automatically discovered and registered. No manual registration
 Add the toolset getter function to your agent's tools:
 
 ```python
-from <package>.toolbox.category.get_toolset import get_toolset
+from opensage.toolbox.category.get_toolset import get_toolset
 
-agent = AigiseAgent(
+agent = Agent(
     name="my_agent",
     tools=[get_toolset, ...],  # Add the getter function
     ...

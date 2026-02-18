@@ -5,7 +5,7 @@ Evaluation scripts run agents on benchmark datasets for performance measurement 
 ## Command
 
 ```bash
-cd src/aigise/evaluations
+cd src/opensage/evaluations
 python cybergym/cybergym_vul_detection.py run \
   --agent-id my_agent \
   --config-path /path/to/config.toml \
@@ -117,15 +117,17 @@ task = self._create_task(sample)
 2. Creates `EvaluationTask` object with:
    - `session_id`: Unique ID for this task
    - `sample`: Original sample data
-   - `aigise_session`: Will be created next
+   - `session`: Will be created next
    - Metadata (task name, description, etc.)
 
 #### 5.2 Create OpenSage Session
 
 ```python
-aigise_session = get_aigise_session(
-    aigise_session_id=task.session_id,
-    config_path=self.config_path
+import opensage
+
+session = opensage.get_session(
+    session_id=task.session_id,
+    config_path=self.config_path,
 )
 ```
 
@@ -144,9 +146,9 @@ This is benchmark-specific. Example for CyberGym:
 
 2. **Initialize sandboxes**:
    ```python
-   aigise_session.sandboxes.initialize_shared_volumes()
-   await aigise_session.sandboxes.launch_all_sandboxes()
-   await aigise_session.sandboxes.initialize_all_sandboxes()
+   session.sandboxes.initialize_shared_volumes()
+   await session.sandboxes.launch_all_sandboxes()
+   await session.sandboxes.initialize_all_sandboxes()
    ```
    - Creates shared volumes
    - Launches required sandbox containers
@@ -154,7 +156,7 @@ This is benchmark-specific. Example for CyberGym:
 
 3. **Set source directory**:
    ```python
-   aigise_session.config.src_dir_in_sandbox = "/shared/code"
+   session.config.src_dir_in_sandbox = "/shared/code"
    ```
    - Tells tools where to find source code
 
@@ -167,7 +169,7 @@ This is benchmark-specific. Example for CyberGym:
 
 ```python
 mk_agent = self._load_mk_agent()
-agent = mk_agent(aigise_session_id=task.session_id)
+agent = mk_agent(session_id=task.session_id)
 ```
 
 1. Imports agent module
@@ -183,7 +185,7 @@ await inner_session_service.create_session(
     app_name=app_name,
     user_id=self.user_id + "_" + meta_data,
     session_id=task.session_id,
-    state={"aigise_session_id": task.session_id},
+    state={"opensage_session_id": task.session_id},
 )
 
 runner = Runner(
@@ -194,7 +196,7 @@ runner = Runner(
 ```
 
 - Creates ADK session that maps to OpenSage session
-- Stores `aigise_session_id` in session state
+- Stores `opensage_session_id` in session state
 - Creates ADK Runner for agent execution
 
 #### 5.6 Run Agent
@@ -271,7 +273,7 @@ self._save_result(task, result)
 #### 5.9 Cleanup Task Session
 
 ```python
-cleanup_aigise_session(task.session_id)
+opensage.cleanup_session(task.session_id)
 ```
 
 - Stops sandbox containers

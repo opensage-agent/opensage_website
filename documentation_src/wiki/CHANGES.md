@@ -63,8 +63,7 @@ This file summarizes significant changes to the OpenSage documentation.
 
 ## Previous Updates
 
-### Project Name Change: AIgiSE → OpenSage
+### Project Name Update
 
-All documentation was updated to reflect the project name change from "AIgiSE" to "OpenSage" (Open Self-programming Agent Generation Engine).
-
-**Note**: Code paths and package names remain as `aigise` for functional reasons.
+All documentation was updated to reflect the project name OpenSage (Open
+Self-programming Agent Generation Engine).

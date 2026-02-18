@@ -8,11 +8,11 @@ This section covers how to extend OpenSage with new functionality.
 - [Sandboxes](Sandboxes.md) - Sandbox backends and how to add new sandbox types
 - [Adding Evaluations](Adding-Evaluations.md) - How to add evaluation benchmarks
 
-## Extending AigiseAgent
+## Extending the Base Agent
 
-To add features to AigiseAgent:
+To add features to the base agent:
 
-1. Modify `src/aigise/agents/aigise_agent.py`
+1. Modify code under `src/opensage/agents/`
 2. Ensure backward compatibility
 3. Add configuration options if needed
 4. Update documentation

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Evaluations are used to benchmark agent performance on specific tasks. The evaluation system in AIgiSE is built on top of the base `Evaluation` class, which provides a complete framework for running benchmarks, managing sandboxes, collecting outputs, and generating metrics.
+Evaluations are used to benchmark agent performance on specific tasks. The evaluation system in OpenSage is built on top of the base `Evaluation` class, which provides a complete framework for running benchmarks, managing sandboxes, collecting outputs, and generating metrics.
 
 ## Entry Points
 
@@ -45,7 +45,7 @@ Evaluations use Python Fire for command-line interface. You can run evaluations 
 
 ```bash
 # Option 1: Auto-select mode (uses generate() or generate_threaded() based on use_multiprocessing)
-python -m aigise.evaluations.my_benchmark.my_evaluation \
+python -m opensage.evaluations.my_benchmark.my_evaluation \
   --dataset_path="org/dataset" \
   --agent_dir="examples/agents/my_agent" \
   --max_workers=6 \
@@ -53,25 +53,25 @@ python -m aigise.evaluations.my_benchmark.my_evaluation \
   run
 
 # Option 2: Explicit multiprocessing mode
-python -m aigise.evaluations.my_benchmark.my_evaluation \
+python -m opensage.evaluations.my_benchmark.my_evaluation \
   --dataset_path="org/dataset" \
   --agent_dir="examples/agents/my_agent" \
   generate
 
 # Option 3: Multithreading mode
-python -m aigise.evaluations.my_benchmark.my_evaluation \
+python -m opensage.evaluations.my_benchmark.my_evaluation \
   --dataset_path="org/dataset" \
   --agent_dir="examples/agents/my_agent" \
   generate_threaded
 
 # Option 4: Single-threaded debugging mode
-python -m aigise.evaluations.my_benchmark.my_evaluation \
+python -m opensage.evaluations.my_benchmark.my_evaluation \
   --dataset_path="org/dataset" \
   --agent_dir="examples/agents/my_agent" \
   run_debug
 
 # Or using direct file path
-python src/aigise/evaluations/my_benchmark/my_evaluation.py \
+python src/opensage/evaluations/my_benchmark/my_evaluation.py \
   --dataset_path="org/dataset" \
   --agent_dir="examples/agents/my_agent" \
   run
@@ -80,7 +80,7 @@ python src/aigise/evaluations/my_benchmark/my_evaluation.py \
 **Using Python API:**
 
 ```python
-from aigise.evaluations import MyEvaluation
+from opensage.evaluations import MyEvaluation
 
 # Create evaluation instance
 eval = MyEvaluation(
@@ -107,10 +107,10 @@ eval.run_debug()
 
 ### 1. Create Evaluation Module
 
-Create a new directory under `src/aigise/evaluations/` with your benchmark name:
+Create a new directory under `src/opensage/evaluations/` with your benchmark name:
 
 ```
-src/aigise/evaluations/
+src/opensage/evaluations/
 └── my_benchmark/
     ├── __init__.py
     └── my_evaluation.py
@@ -126,7 +126,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 
-from aigise.evaluations import Evaluation, EvaluationTask
+from opensage.evaluations import Evaluation, EvaluationTask
 
 @dataclass
 class MyEvaluation(Evaluation):
@@ -227,10 +227,10 @@ class MyEvaluation(Evaluation):
 
 ### 3. Configuration Template
 
-Create a configuration template in `src/aigise/evaluations/configs/`:
+Create a configuration template in `src/opensage/evaluations/configs/`:
 
 ```toml
-# src/aigise/evaluations/configs/my_benchmark_config.toml
+# src/opensage/evaluations/configs/my_benchmark_config.toml
 [llm]
 model_name = "gemini-2.0-flash-exp"
 temperature = 0.7
@@ -260,7 +260,7 @@ Since evaluations use Python Fire, you can run them from command-line:
 
 ```bash
 # Run with auto-select mode (recommended)
-python -m aigise.evaluations.my_benchmark.my_evaluation \
+python -m opensage.evaluations.my_benchmark.my_evaluation \
   --dataset_path="org/dataset" \
   --agent_dir="examples/agents/my_agent" \
   --max_workers=6 \
@@ -268,13 +268,13 @@ python -m aigise.evaluations.my_benchmark.my_evaluation \
   run
 
 # Or for debugging (single-threaded)
-python -m aigise.evaluations.my_benchmark.my_evaluation \
+python -m opensage.evaluations.my_benchmark.my_evaluation \
   --dataset_path="org/dataset" \
   --agent_dir="examples/agents/my_agent" \
   run_debug
 
 # Or directly specify execution method
-python -m aigise.evaluations.my_benchmark.my_evaluation \
+python -m opensage.evaluations.my_benchmark.my_evaluation \
   --dataset_path="org/dataset" \
   --agent_dir="examples/agents/my_agent" \
   generate  # or generate_threaded, generate_single_thread
@@ -283,7 +283,7 @@ python -m aigise.evaluations.my_benchmark.my_evaluation \
 Or programmatically:
 
 ```python
-from aigise.evaluations import MyEvaluation
+from opensage.evaluations import MyEvaluation
 
 # Create and run
 eval = MyEvaluation(
@@ -306,7 +306,7 @@ Each evaluation sample goes through the following lifecycle:
    - Extract task ID, prompt, paths, etc.
 
 2. **Environment Preparation** (`_prepare_environment()`)
-   - Initialize AIgiSE session
+   - Initialize OpenSage session
    - Load/launch sandboxes
    - Set up Neo4j (if enabled)
    - Load cached sandbox states (if `use_cache=True`)
@@ -348,7 +348,7 @@ Each evaluation sample goes through the following lifecycle:
 - `_get_cache_dir(sample: dict) -> str`: Cache directory
 - `_get_output_dir_in_sandbox(sample: dict) -> str | tuple | None`: Output dirs to export
 - `_prepare_general_env() -> None`: Setup shared across all samples
-- `_before_initialize_hooks(aigise_session, task) -> None`: Hooks before sandbox init
+- `_before_initialize_hooks(session, task) -> None`: Hooks before sandbox init
 - `customized_modify_and_save_results(results, failed_samples, mode) -> None`: Post-processing
 - `evaluate() -> None`: Final evaluation and metrics
 
@@ -398,13 +398,13 @@ Key configuration options available in `Evaluation`:
 
 See existing evaluations for reference:
 
-- `src/aigise/evaluations/cybergym/__init__.py` - Base class of evaluation
-- `src/aigise/evaluations/cybergym/cybergym_static.py` - Full-featured evaluation
-- `src/aigise/evaluations/mock_debug/mock_debug_evaluation.py` - Minimal example
-- `src/aigise/evaluations/secodeplt/vul_detection.py` - Another example
+- `src/opensage/evaluations/cybergym/__init__.py` - Base class of evaluation
+- `src/opensage/evaluations/cybergym/cybergym_static.py` - Full-featured evaluation
+- `src/opensage/evaluations/mock_debug/mock_debug_evaluation.py` - Minimal example
+- `src/opensage/evaluations/secodeplt/vul_detection.py` - Another example
 
 ## See Also
 
 - [Development Guides](Development-Guides.md) - Other development guides
 - [Testing Debugging](Testing-Debugging.md) - Testing evaluations
-- `src/aigise/evaluations/__init__.py` - Base Evaluation class implementation
+- `src/opensage/evaluations/__init__.py` - Base Evaluation class implementation

@@ -8,9 +8,9 @@ Every operation in OpenSage is scoped to a session. Sessions provide:
 - Lifecycle management
 
 ```python
-from <package> import get_session
+import opensage
 
-session = get_aigise_session("my_session_id", config_path="config.toml")
+session = opensage.get_session("my_session_id", config_path="config.toml")
 ```
 
 ## Agent Creation
@@ -18,10 +18,10 @@ session = get_aigise_session("my_session_id", config_path="config.toml")
 Agents are created through `mk_agent` functions:
 
 ```python
-def mk_agent(aigise_session_id: str) -> AigiseAgent:
-    session = get_aigise_session(aigise_session_id)
+def mk_agent(session_id: str):
+    session = opensage.get_session(session_id)
     # ... configure agent ...
-    return AigiseAgent(...)
+    return Agent(...)
 ```
 
 ## Sandbox Lifecycle
@@ -29,7 +29,7 @@ def mk_agent(aigise_session_id: str) -> AigiseAgent:
 Sandboxes are managed through the session:
 
 ```python
-session = get_aigise_session("my_session_id")
+session = opensage.get_session("my_session_id")
 sandbox = session.sandboxes.get_sandbox("main")
 result = sandbox.run_command_in_container("ls /shared")
 ```
@@ -65,16 +65,16 @@ MCP (Model Context Protocol) toolsets provide integration with external services
 ```python
 @safe_tool_execution
 @requires_sandbox("gdb_mcp")
-def get_toolset(aigise_session_id: str) -> MCPToolset:
-    url = get_mcp_url_from_session_id("gdb_mcp", aigise_session_id)
+def get_toolset(session_id: str) -> MCPToolset:
+    url = get_mcp_url_from_session_id("gdb_mcp", session_id)
     return MCPToolset(connection_params=SseConnectionParams(url=url))
 ```
 
 ### Automatic Discovery
 
 Tools are automatically discovered from:
-- `src/<package>/bash_tools/` (built-in tools)
-- `~/.local/plugins/<product>/tools/` (user plugins)
+- `src/opensage/bash_tools/` (built-in tools)
+- `~/.local/plugins/opensage/tools/` (user plugins)
 
 No manual registration is required.
 

@@ -28,8 +28,9 @@
   <title>OpenSage: Self-programming Agent Generation Engine</title>
 
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
-  <link rel="apple-touch-icon" href="static/images/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="static/opensage.svg?v=3">
+  <link rel="alternate icon" type="image/x-icon" href="favicon.ico?v=3">
+  <link rel="apple-touch-icon" href="static/opensage.png?v=3">
 
   <!-- CSS -->
   <link rel="stylesheet" href="static/css/bulma.min.css">
@@ -71,10 +72,10 @@
               <h1 class="title is-1 publication-title">OpenSage: Self-programming Agent Generation Engine</h1>
 
               <div class="is-size-6 publication-authors authors-muted">
-                <span class="author-block"><em>Hongwei Li</em><sup>1,*</sup>,</span>
-                <span class="author-block"><em>Zhun Wang</em><sup>2,*</sup>,</span>
+                <span class="author-block"><em>Hongwei Li</em><a class="author-email" href="mailto:hongwei@ucsb.edu" aria-label="Email Hongwei Li"><i class="fas fa-envelope"></i></a><sup>1,*</sup>,</span>
+                <span class="author-block"><em>Zhun Wang</em><a class="author-email" href="mailto:zhun.wang@berkeley.edu" aria-label="Email Zhun Wang"><i class="fas fa-envelope"></i></a><sup>2,*</sup>,</span>
                 <span class="author-block"><em>Qinrun Dai</em><sup>3</sup>,</span>
-                <span class="author-block"><em>Yuzhou Nie</em><sup>1,6</sup>,</span>
+                <span class="author-block"><em>Yuzhou Nie</em><sup>1</sup>,</span>
                 <span class="author-block"><em>Jinjun Peng</em><sup>4</sup>,</span>
                 <span class="author-block"><em>Ruitong Liu</em><sup>3</sup>,</span>
                 <span class="author-block"><em>Jingyang Zhang</em><sup>6</sup>,</span>
@@ -83,8 +84,8 @@
                 <span class="author-block"><em>Lun Wang</em><sup>7</sup>,</span>
                 <span class="author-block"><em>Yangruibo Ding</em><sup>5</sup>,</span>
                 <span class="author-block"><em>Yueqi Chen</em><sup>3</sup>,</span>
-                <span class="author-block"><em>Wenbo Guo</em><sup>1,6</sup>,</span>
-                <span class="author-block"><em>Dawn Song</em><sup>2,6</sup></span>
+                <span class="author-block"><em>Wenbo Guo</em><sup>1</sup>,</span>
+                <span class="author-block"><em>Dawn Song</em><sup>2</sup></span>
               </div>
 
               <div class="is-size-7 publication-authors affils-muted">
@@ -93,7 +94,7 @@
                 <span class="author-block"><sup>3</sup>University of Colorado Boulder</span>
                 <span class="author-block"><sup>4</sup>Columbia University</span>
                 <span class="author-block"><sup>5</sup>UCLA</span>
-                <span class="author-block"><sup>6</sup>Virtue AI</span>
+                <span class="author-block"><sup>6</sup>Duke University</span>
                 <span class="author-block"><sup>7</sup>Google DeepMind</span>
               </div>
 
@@ -155,10 +156,28 @@
             OpenSage is built around three core systems that strongly influence agent performance:
           </p>
           <ul>
-            <li><b>Self-generating agent topology</b>: the agent can dynamically create, run, and terminate sub-agents during execution, supporting both vertical decomposition (specialists per sub-task) and horizontal exploration (parallel plans + ensemble).</li>
-            <li><b>Dynamic tool synthesis and management</b>: the agent can write task-specific tools (e.g., scripts, generators, analyzers) and use a hierarchical tool organization with tool-specific sandboxing, state caching, and async/background execution.</li>
-            <li><b>Hierarchical, graph-based memory</b>: a short-term execution-memory graph plus a long-term knowledge graph, bridged by a dedicated memory agent that retrieves, stores, and updates high-signal knowledge at the point of need.</li>
+            <li><b>Self-generating agent topology</b>: the agent can dynamically create, execute, and terminate sub-agents during task execution, supporting both <b>vertical agent topology</b> (decomposing a complex task into sequential sub-tasks handled by specialized sub-agents) and <b>horizontal agent topology</b> (multiple sub-agents execute the same task using distinct plans, then merge results via an agent ensemble mechanism).</li>
+            <li><b>Dynamic tool synthesis and management</b>: the agent can create tools during execution (e.g., scripts, analyzers, generators), supported by meta-tools for tool creation and a tooling runtime with tool-specific sandboxing and state management.</li>
+            <li><b>Hierarchical Memory Management</b>: target-level <b>long-term memory</b> (a graph database for shareable knowledge) plus execution-based <b>short-term memory</b> (a graph structure for tracking agent runs), with a <b>memory agent</b> equipped with memory read and write tools.</li>
           </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature Matrix -->
+    <section class="section" id="feature-matrix">
+      <div class="container is-max-widescreen">
+        <h2 class="title is-3 has-text-centered">Feature Matrix</h2>
+        <div class="feature-matrix-block figure-block">
+          <div class="content has-text-justified">
+            <p class="figure-lead">
+              Comparison between OpenSage and SOTA ADKs in key features.
+              ● means full support; ◐ means partial or limited support; ○ means not supported.
+            </p>
+          </div>
+          <figure class="feature-matrix-figure">
+            <img src="static/images/figures/feature_matrix.png" alt="Feature matrix comparing OpenSage and SOTA ADKs in key features, using solid, half, and hollow circles to denote support." loading="lazy">
+          </figure>
         </div>
       </div>
     </section>
@@ -169,15 +188,17 @@
         <div class="columns is-centered has-text-centered">
           <div class="column is-full">
             <h2 class="title is-3">Results</h2>
-            <div class="content has-text-justified">
-              <p>
-                OpenSage is evaluated on three SOTA benchmarks: <b>CyberGym</b>, <b>Terminal-Bench 2.0</b>, and <b>SWE-Bench Pro</b>.
-              </p>
-            </div>
+            <div class="results-block figure-block">
+              <div class="content has-text-justified">
+                <p class="figure-lead">
+                  OpenSage is evaluated on three SOTA benchmarks: CyberGym, Terminal-Bench 2.0, and SWE-Bench Pro.
+                </p>
+              </div>
 
-            <figure class="results-figure">
-              <img src="static/images/figures/result_main.png" alt="Benchmark results on CyberGym, Terminal-Bench 2.0, and SWE-Bench Pro (Python): resolved rate (%) bar charts." loading="lazy">
-            </figure>
+              <figure class="results-figure">
+                <img src="static/images/figures/result_main.png" alt="Benchmark results on CyberGym, Terminal-Bench 2.0, and SWE-Bench Pro (Python): resolved rate (%) bar charts." loading="lazy">
+              </figure>
+            </div>
 
           </div>
         </div>
@@ -186,7 +207,7 @@
 
     <!-- Key Techniques -->
     <section class="section" id="features">
-      <div class="container is-max-desktop">
+      <div class="container is-max-widescreen">
         <h2 class="title is-3 has-text-centered">Key Techniques</h2>
 
         <div class="columns is-multiline is-centered">
@@ -194,9 +215,9 @@
             <div class="box content">
               <h3 class="title is-5">Self-generating Agent Topology</h3>
               <ul class="has-text-grey">
-                <li>Create/run/stop sub-agents at runtime</li>
-                <li>Vertical decomposition with specialist sub-agents</li>
-                <li>Horizontal parallel exploration via agent ensemble</li>
+                <li>Unified sub-agent pool (store and invoke sub-agents)</li>
+                <li>Vertical topology and horizontal topology</li>
+                <li>Agent ensemble mechanism (run sub-agents in parallel)</li>
               </ul>
             </div>
           </div>
@@ -205,20 +226,20 @@
             <div class="box content">
               <h3 class="title is-5">Dynamic Tool Synthesis</h3>
               <ul class="has-text-grey">
-                <li>AI-writable tools as first-class artifacts</li>
-                <li>Hierarchical organization for discovery at scale</li>
-                <li>Tool-specific sandboxing, caching, async execution</li>
+                <li>Meta-tools that provide primitives for tool synthesis</li>
+                <li>Tool-specific sandboxing and tool state management</li>
+                <li>Domain-specific tool set tailored to software engineering tasks</li>
               </ul>
             </div>
           </div>
 
           <div class="column is-6-tablet is-4-desktop">
             <div class="box content">
-              <h3 class="title is-5">Hierarchical Memory</h3>
+              <h3 class="title is-5">Hierarchical Memory Management</h3>
               <ul class="has-text-grey">
-                <li>Graph-based short-term execution memory</li>
-                <li>Long-term knowledge graph for reusable insights</li>
-                <li>Memory agent for retrieval, updates, and compaction</li>
+                <li>Short-term memory: graph-based short-term memory</li>
+                <li>Long-term memory: a graph managed by Neo4j and stored in a separate database</li>
+                <li>Memory agent: equipped with memory read and write tools</li>
               </ul>
             </div>
           </div>
@@ -314,7 +335,7 @@
               </div>
               <div class="column is-7-desktop is-12-tablet content has-text-justified">
                 <p><b>Topology + tooling are both necessary (CyberGym).</b> This plot quantifies how OpenSage’s key design choices affect end-to-end vulnerability reproduction on a 300-instance subset.</p>
-                <p>The left panel isolates <b>agent topology</b> effects (horizontal ensemble and vertical dynamic sub-agents). The right panel isolates the <b>tooling system</b> contribution versus a raw terminal and a no-feature baseline.</p>
+                <p>The left panel isolates agent topology effects (horizontal ensemble and vertical dynamic sub-agents). The right panel isolates the tooling system contribution versus a raw terminal and a no-feature baseline.</p>
               </div>
             </div>
           </div>

@@ -5,7 +5,7 @@
 Agent Skills are bash scripts organized in a structured format with `SKILL.md` metadata:
 
 ```
-src/aigise/bash_tools/
+src/opensage/bash_tools/
 └── category/
     └── tool-name/
         ├── SKILL.md
@@ -92,33 +92,33 @@ MCP toolsets provide integration with external services:
 
 ```python
 from google.adk.tools.mcp_tool.mcp_toolset import MCPToolset, SseConnectionParams
-from aigise.toolbox.decorators import requires_sandbox, safe_tool_execution
-from aigise.utils.agent_utils import get_mcp_url_from_session_id
+from opensage.toolbox.decorators import requires_sandbox, safe_tool_execution
+from opensage.utils.agent_utils import get_mcp_url_from_session_id
 
 @safe_tool_execution
 @requires_sandbox("gdb_mcp")
-def get_gdb_toolset(aigise_session_id: str) -> MCPToolset:
+def get_gdb_toolset(session_id: str) -> MCPToolset:
     """Create MCPToolset for GDB debugging."""
-    url = get_mcp_url_from_session_id("gdb_mcp", aigise_session_id)
+    url = get_mcp_url_from_session_id("gdb_mcp", session_id)
     return MCPToolset(connection_params=SseConnectionParams(url=url))
 ```
 
 ## Pattern: Dynamic Tool Discovery
 
 Tools are automatically discovered from:
-- `src/aigise/bash_tools/` (built-in tools)
-- `~/.local/plugins/aigise/tools/` (user plugins)
+- `src/opensage/bash_tools/` (built-in tools)
+- `~/.local/plugins/opensage/tools/` (user plugins)
 
 The framework scans for `SKILL.md` files and loads them automatically. No manual registration needed.
 
 ## Pattern: Agent Composition
 
 ```python
-def mk_agent(aigise_session_id: str) -> AigiseAgent:
-    sub_agent = AigiseAgent(...)
+def mk_agent(session_id: str):
+    sub_agent = Agent(...)
     sub_agent_tool = AgentTool(agent=sub_agent)
 
-    root_agent = AigiseAgent(
+    root_agent = Agent(
         tools=[sub_agent_tool, ...],
         sub_agents=[...]
     )
@@ -134,7 +134,6 @@ The Code Understanding Agent is a utility agent that caches question-answer pair
 ```python
 from examples.agents.code_understanding_agent import create_code_understanding_agent_tool
 from google.adk.models import BaseLlm, Gemini
-from aigise.agents.aigise_agent import AigiseAgent
 
 # Create code understanding agent tool
 code_tool = create_code_understanding_agent_tool(
@@ -143,7 +142,7 @@ code_tool = create_code_understanding_agent_tool(
 )
 
 # Use in another agent
-orchestrator = AigiseAgent(
+orchestrator = Agent(
     name="orchestrator",
     model=Gemini(model="gemini-2.5-flash"),
     tools=[code_tool, other_tools...],

@@ -2,8 +2,8 @@
 
 ## Session Management
 
-- Always use `get_aigise_session()` instead of creating sessions directly
-- Clean up sessions when done: `cleanup_aigise_session(session_id)`
+- Always use `opensage.get_session()` instead of creating sessions directly
+- Clean up sessions when done: `opensage.cleanup_session(session_id)`
 - Use unique session IDs for different runs
 
 ## Agent Development

@@ -1,13 +1,13 @@
 # RL Framework Integration
 
-AIgiSE provides seamless integration with RL frameworks (slime, verl, areal, etc.) for agent training and evaluation. This integration allows RL frameworks to use AIgiSE agents as rollout systems.
+OpenSage provides seamless integration with RL frameworks (slime, verl, areal, etc.) for agent training and evaluation. This integration allows RL frameworks to use OpenSage agents as rollout systems.
 
 ## Overview
 
-The RL integration module (`aigise.rl_integration`) provides:
+The RL integration module (`opensage.rl_integration`) provides:
 
 - **Client**: Manages agent configuration and model setup
-- **RLSession**: Wraps AigiseSession with framework-specific generate methods
+- **RLSession**: Wraps an OpenSage session with framework-specific generate methods
 - **Adapters**: Framework-specific logic for sample handling (slime, verl, areal)
 
 ## Architecture
@@ -15,9 +15,9 @@ The RL integration module (`aigise.rl_integration`) provides:
 ```
 RL Framework (slime/verl/areal)
     ↓
-AIgiSE Client
+OpenSage Client
     ↓
-RLSession (wraps AigiseSession)
+RLSession (wraps an OpenSage session)
     ↓
 Framework Adapter (SlimeAdapter/VerlAdapter/ArealAdapter)
     ↓
@@ -29,10 +29,10 @@ Agent Execution
 ### Creating a Client
 
 ```python
-import aigise
+import opensage
 
 # Create client for agent and benchmark
-client = aigise.create(
+client = opensage.create(
     agent_name="vul_agent",
     benchmark_name="secodeplt"
 )
@@ -40,7 +40,7 @@ client = aigise.create(
 
 The `create()` function:
 - Resolves the agent directory from `examples/agents/<agent_name>/`
-- Loads the benchmark interface from `aigise/evaluations/<benchmark_name>/`
+- Loads the benchmark interface from `opensage/evaluations/<benchmark_name>/`
 - Creates a `Client` instance with agent and benchmark configuration
 
 ### Using RLSession
@@ -78,7 +78,7 @@ Initializes the client with agent and benchmark configuration.
 
 **Parameters:**
 - `agent_name`: Name of the agent (must exist in `examples/agents/`)
-- `benchmark_name`: Name of the benchmark (must exist in `aigise/evaluations/`)
+- `benchmark_name`: Name of the benchmark (must exist in `opensage/evaluations/`)
 
 **Raises:**
 - `ValueError`: If agent or benchmark not found
@@ -140,15 +140,15 @@ The benchmark interface (`BenchmarkInterface`) provides:
 - Evaluation instance creation
 - Task data management
 
-Benchmarks are automatically loaded from `aigise/evaluations/<benchmark_name>/` and must implement the `BenchmarkInterface` protocol.
+Benchmarks are automatically loaded from `opensage/evaluations/<benchmark_name>/` and must implement the `BenchmarkInterface` protocol.
 
 ## Example: Complete Workflow
 
 ```python
-import aigise
+import opensage
 
 # 1. Create client
-client = aigise.create("vul_agent", "secodeplt")
+client = opensage.create("vul_agent", "secodeplt")
 
 # 2. Initialize session
 with client.init_session() as session:
@@ -164,7 +164,7 @@ with client.init_session() as session:
 
 ## Session Lifecycle
 
-1. **Session Creation**: `init_session()` creates a new AigiseSession
+1. **Session Creation**: `init_session()` creates a new OpenSage session
 2. **Agent Loading**: Agent is loaded and configured
 3. **Sandbox Initialization**: Required sandboxes are launched and initialized
 4. **Sample Generation**: Framework-specific generate methods execute agents
@@ -176,7 +176,7 @@ The RL integration automatically handles:
 
 - **Agent Configuration**: Loads agent from `examples/agents/`
 - **Model Setup**: Configures LLM models from agent configuration
-- **Session Management**: Creates and manages AigiseSession lifecycle
+- **Session Management**: Creates and manages the session lifecycle
 - **Sandbox Management**: Launches and initializes required sandboxes
 - **Benchmark Integration**: Loads benchmark interface and evaluation instances
 - **Framework Adapters**: Provides framework-specific sample handling

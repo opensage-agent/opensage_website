@@ -3,10 +3,10 @@
 ```text
 Usage: opensage web [OPTIONS]
 
-  Starts an AIgiSE-flavored Web UI: prepare environment then serve agents.
+  Starts an OpenSage-flavored Web UI: prepare environment then serve agents.
 
 Options:
-  --config FILE                   Path to AIgiSE TOML config.  [required]
+  --config FILE                   Path to OpenSage TOML config.  [required]
   --agent DIRECTORY               Path to the agent folder (must contain agent
                                   files).  [required]
   --host TEXT                     Binding host for the server.  [default:

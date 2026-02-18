@@ -3,7 +3,7 @@
 ```text
 Usage: opensage dependency-check [OPTIONS]
 
-  Check AIgiSE external dependencies.
+  Check OpenSage external dependencies.
 
   Checks for manually installed dependencies: - CodeQL: Required for CodeQL
   static analysis features - Docker: Required for native Docker sandbox

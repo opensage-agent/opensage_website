@@ -1,6 +1,6 @@
 # CLI Reference
 
-This section documents the OpenSage/SAGE-X command-line interface.
+This section documents the OpenSage command-line interface.
 
 ## Commands
 

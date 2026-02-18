@@ -1,6 +1,6 @@
 # Benchmarking
 
-This section covers how to evaluate OpenSage/SAGE-X agents and measure
+This section covers how to evaluate OpenSage agents and measure
 performance across tasks.
 
 ## What you'll find here

@@ -1,4 +1,4 @@
-"""MkDocs hook: generate API reference pages for AIgiSE (aigise).
+"""MkDocs hook: generate API reference pages for OpenSage docs.
 
 We generate a small set of stable, high-signal pages (by package area) rather
 than one page per module. Each page uses mkdocstrings directives, so the API
@@ -10,7 +10,7 @@ from __future__ import annotations
 from pathlib import Path
 
 
-_PAGES: list[tuple[str, str, list[str] | None]] = [
+_PAGES: list[tuple[str, str, list[str]]] = [
   (
     "session.md",
     "Session",
@@ -74,17 +74,10 @@ def _mkdocstrings_block(ident: str) -> str:
   )
 
 
-def _write_page(path: Path, title: str, idents: list[str] | None) -> None:
+def _write_page(path: Path, title: str, idents: list[str]) -> None:
   path.parent.mkdir(parents=True, exist_ok=True)
-  if idents is None:
-    content = (
-      f"# {title}\n\n"
-      "This section is automatically generated from the `AIgiSE/src/aigise/`\n"
-      "source tree using `mkdocstrings`.\n"
-    )
-  else:
-    blocks = "\n\n".join(_mkdocstrings_block(ident) for ident in idents)
-    content = f"# {title}\n\n{blocks}\n"
+  blocks = "\n\n".join(_mkdocstrings_block(ident) for ident in idents)
+  content = f"# {title}\n\n{blocks}\n"
   path.write_text(content, encoding="utf-8")
 
 

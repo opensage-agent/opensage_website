@@ -2,7 +2,7 @@
 
 ## Overview
 
-The AIgiSE sandbox system provides isolated execution environments through a pluggable backend architecture. This guide covers:
+The OpenSage sandbox system provides isolated execution environments through a pluggable backend architecture. This guide covers:
 
 - **Sandbox Backends**: Execution engines (Native Docker, Remote Docker, Kubernetes)
 - **Sandbox Initializers**: Functional types (main, neo4j, joern, gdb_mcp, etc.)

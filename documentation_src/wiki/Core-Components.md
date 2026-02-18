@@ -1,8 +1,8 @@
 # Core Components
 
-OpenSage core components (Note: code uses `aigise` package name for compatibility).
+OpenSage core components.
 
-## 1. AigiseSession
+## 1. Session
 
 The central manager for all session-specific resources.
 
@@ -14,11 +14,11 @@ The central manager for all session-specific resources.
 - Agent ensemble coordination
 
 **Key Files:**
-- `src/aigise/session/aigise_session.py`
-- `src/aigise/session/aigise_dynamic_agent_manager.py`
-- `src/aigise/session/aigise_sandbox_manager.py`
+- `opensage.session.session`
+- `opensage.session.dynamic_agent_manager`
+- `opensage.session.sandbox_manager`
 
-## 2. AigiseAgent
+## 2. Agent
 
 Extended ADK agent with security-focused features.
 
@@ -29,7 +29,7 @@ Extended ADK agent with security-focused features.
 - Session-aware tool execution
 
 **Key Files:**
-- `src/aigise/agents/aigise_agent.py`
+- Agent implementation lives under the `opensage.agents` namespace.
 
 ## 3. Sandbox System
 
@@ -44,18 +44,18 @@ Isolated execution environments for security analysis.
 - `fuzz`: Fuzzing environment
 
 **Key Files:**
-- `src/aigise/sandbox/base_sandbox.py`
-- `src/aigise/sandbox/native_docker_sandbox.py`
-- `src/aigise/sandbox/k8s_sandbox.py`
-- `src/aigise/sandbox/initializers/`
+- `opensage.sandbox.base_sandbox`
+- `opensage.sandbox.native_docker_sandbox`
+- `opensage.sandbox.k8s_sandbox`
+- `opensage.sandbox.initializers`
 
 ## 4. Configuration System
 
 TOML-based configuration with template variable expansion.
 
 **Key Files:**
-- `src/aigise/config/config_dataclass.py`
-- `src/aigise/templates/configs/default_config.toml`
+- `opensage.config.config_dataclass`
+- `opensage.templates.configs.default_config`
 
 ## 5. Toolbox
 
@@ -69,7 +69,7 @@ Collection of security analysis tools.
 - Evaluation: PoC submission and validation
 
 **Key Files:**
-- `src/aigise/toolbox/`
+- `opensage.toolbox`
 
 ## Related Topics
 

@@ -16,7 +16,7 @@ OpenSage uses TOML (Tom's Obvious, Minimal Language) format for configuration fi
 Configuration files are loaded in the following order:
 
 1. **Default Configuration**: `src/<package>/templates/configs/default_config.toml` (used when no config is specified)
-2. **Custom Configuration**: Path specified via `config_path` parameter when creating `AigiseSession`
+2. **Custom Configuration**: Path specified via `config_path` parameter when creating a session
 
 ## Configuration Structure
 
@@ -261,7 +261,7 @@ PYTHONPATH = "/shared/code"
 initializer_timeout_sec = 1800
 
 [sandbox.sandboxes.joern]
-image = "aigise/joern"
+image = "opensage/joern"
 project_relative_dockerfile_path = "dockerfiles/joern/Dockerfile"
 command = ""
 
@@ -497,7 +497,7 @@ timeout = 300
 PYTHONPATH = "/shared/code"
 
 [sandbox.sandboxes.joern]
-image = "aigise/joern"
+image = "opensage/joern"
 project_relative_dockerfile_path = "dockerfiles/joern/Dockerfile"
 command = ""
 
@@ -555,21 +555,21 @@ sse_port = 1111
 ### Using Default Configuration
 
 ```python
-from aigise.session import AigiseSession
+import opensage
 
 # Uses default config from src/<package>/templates/configs/default_config.toml
-session = AigiseSession(aigise_session_id="my_session")
+session = opensage.get_session("my_session")
 ```
 
 ### Using Custom Configuration
 
 ```python
-from aigise.session import AigiseSession
+import opensage
 
 # Load custom configuration file
-session = AigiseSession(
-    aigise_session_id="my_session",
-    config_path="/path/to/my_config.toml"
+session = opensage.get_session(
+    "my_session",
+    config_path="/path/to/my_config.toml",
 )
 ```
 

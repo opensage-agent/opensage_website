@@ -82,26 +82,28 @@ This is the core setup phase that creates the OpenSage session and initializes a
 - Format: `str(uuid.uuid4())`
 - Example: `"550e8400-e29b-41d4-a716-446655440000"`
 
-#### 3.2 Create AigiseSession
+#### 3.2 Create Session
 ```python
-aigise_session = get_aigise_session(
-    aigise_session_id=session_id,
+import opensage
+
+session = opensage.get_session(
+    session_id=session_id,
     config_path=config_path
 )
 ```
 - Loads TOML configuration file
 - Expands template variables (e.g., `${VAR_NAME}`)
-- Creates `AigiseSession` instance with all managers:
+- Creates a session instance with all managers:
   - `config`: Configuration manager
   - `agents`: DynamicAgentManager
-  - `sandboxes`: AigiseSandboxManager
-  - `neo4j`: AigiseNeo4jClientManager
-  - `ensemble`: AigiseEnsembleManager
+  - `sandboxes`: SandboxManager
+  - `neo4j`: Neo4j client manager
+  - `ensemble`: Ensemble manager
 
 #### 3.3 Load Agent and Collect Dependencies
 ```python
 mk_agent = _load_mk_agent_from_dir(agent_dir)
-dummy_agent = mk_agent(aigise_session_id=session_id)
+dummy_agent = mk_agent(session_id=session_id)
 sandbox_dependencies = collect_sandbox_dependencies(dummy_agent)
 ```
 - Dynamically imports `agent.py` from the agent directory
@@ -117,7 +119,7 @@ sandbox_dependencies = collect_sandbox_dependencies(dummy_agent)
 
 #### 3.5 Initialize Shared Volumes
 ```python
-aigise_session.sandboxes.initialize_shared_volumes()
+session.sandboxes.initialize_shared_volumes()
 ```
 - Creates Docker volumes for shared data:
   - `scripts_volume`: Read-only scripts and tools
@@ -127,7 +129,7 @@ aigise_session.sandboxes.initialize_shared_volumes()
 
 #### 3.6 Launch Sandbox Containers
 ```python
-await aigise_session.sandboxes.launch_all_sandboxes()
+await session.sandboxes.launch_all_sandboxes()
 ```
 For each required sandbox type:
 1. Gets sandbox configuration from `session.config.sandbox.sandboxes[sandbox_type]`
@@ -138,7 +140,7 @@ For each required sandbox type:
 
 #### 3.7 Initialize Sandboxes
 ```python
-await aigise_session.sandboxes.initialize_all_sandboxes(continue_on_error=True)
+await session.sandboxes.initialize_all_sandboxes(continue_on_error=True)
 ```
 For each sandbox:
 1. Finds the appropriate initializer (e.g., `JoernInitializer`, `FuzzInitializer`)
@@ -154,21 +156,21 @@ For each sandbox:
 
 ```python
 mk_agent = _load_mk_agent_from_dir(agent_dir)
-root_agent = mk_agent(aigise_session_id=session_id)
+root_agent = mk_agent(session_id=session_id)
 ```
 
 1. Imports agent module again (ensuring latest code)
 2. Calls `mk_agent()` with the session ID
 3. Agent constructor:
-   - Gets session via `get_aigise_session(session_id)`
-   - Loads dynamic tools from filesystem (if using `AigiseAgent`)
+   - Gets session via `opensage.get_session(session_id)`
+   - Loads dynamic tools from filesystem (if enabled)
    - Sets up tool combos, sub-agents, etc.
 4. Returns configured agent instance
 
 ### Step 5: Load Plugins
 
 ```python
-enabled_plugins = aigise_session.config.plugins.enabled or []
+enabled_plugins = session.config.plugins.enabled or []
 plugins = load_plugins(enabled_plugins)
 ```
 
@@ -180,7 +182,7 @@ plugins = load_plugins(enabled_plugins)
 ### Step 6: Create ADK Services
 
 ```python
-session_service = AigiseInMemorySessionService()
+session_service = InMemorySessionServiceBridge()
 artifact_service = InMemoryArtifactService()
 memory_service = InMemoryMemoryService()
 credential_service = InMemoryCredentialService()
@@ -189,7 +191,7 @@ eval_set_results_manager = LocalEvalSetResultsManager(agents_dir=agents_dir_pare
 ```
 
 - Creates in-memory services for ADK integration
-- `AigiseInMemorySessionService` bridges ADK sessions with OpenSage sessions
+- Session service bridges ADK sessions with OpenSage sessions
 - Other services are standard ADK in-memory implementations
 
 ### Step 7: Determine App Name
@@ -204,7 +206,7 @@ app_name = os.path.basename(os.path.dirname(agent_dir.rstrip(os.sep)))
 ### Step 8: Create Web Server
 
 ```python
-web_server = AigiseWebServer(
+web_server = WebServer(
     app_name=app_name,
     root_agent=root_agent,
     fixed_session_id=session_id,
@@ -218,7 +220,7 @@ web_server = AigiseWebServer(
 )
 ```
 
-- Creates `AigiseWebServer` instance
+- Creates the web server instance
 - Configures all services and agent
 - Sets up FastAPI endpoints for:
   - Agent execution (`/run`)
@@ -234,13 +236,13 @@ web_server = AigiseWebServer(
 await session_service.create_session(
     app_name=web_server.app_name,
     user_id="user",
-    state={"aigise_session_id": session_id},
+    state={"opensage_session_id": session_id},
     session_id=session_id,
 )
 ```
 
 - Creates ADK session that maps to OpenSage session
-- Stores `aigise_session_id` in session state
+- Stores `opensage_session_id` in session state
 - This allows ADK Runner to find the OpenSage session
 
 ### Step 10: Create FastAPI App

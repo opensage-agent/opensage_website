@@ -10,7 +10,7 @@ uv run pytest tests/
 uv run pytest tests/unit/test_session.py
 
 # Run with coverage
-uv run pytest --cov=src/aigise tests/
+uv run pytest --cov=src/opensage tests/
 ```
 
 ## Debugging with Web UI

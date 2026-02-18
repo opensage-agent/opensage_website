@@ -1,6 +1,5 @@
 site_name: OpenSage
-site_url: https://3rdn4Li.github.io/SAGE-X
-site_description: SAGE-X Development Documentation
+site_description: OpenSage Development Documentation
 
 # Documentation directory (where markdown files are)
 docs_dir: documentation_src/wiki
@@ -41,8 +40,8 @@ theme:
 
 # Build-time hooks (generate docs automatically)
 hooks:
-  - mkdocs_hooks/generate_aigise_cli_reference.py
-  - mkdocs_hooks/generate_aigise_api_reference.py
+  - mkdocs_hooks/generate_opensage_cli_reference.py
+  - mkdocs_hooks/generate_opensage_api_reference.py
 
 # Plugins
 plugins:

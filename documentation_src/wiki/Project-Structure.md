@@ -4,7 +4,7 @@
 
 ```
 OpenSage/
-├── src/aigise/              # Main source code
+├── src/opensage/            # Public Python namespace
 │   ├── agents/              # Agent implementations
 │   ├── cli/                 # Command-line interface
 │   ├── config/              # Configuration system
@@ -24,30 +24,30 @@ OpenSage/
 
 ## Key Directories Explained
 
-### `src/aigise/agents/`
-- `aigise_agent.py`: Extended ADK agent class
+### `src/opensage/agents/`
+- Extended ADK agent class
 - Tool loading and dynamic tool injection
 
-### `src/aigise/session/`
-- `aigise_session.py`: Main session manager
-- `aigise_sandbox_manager.py`: Sandbox lifecycle management
-- `aigise_dynamic_agent_manager.py`: Agent creation and caching
-- `aigise_ensemble_manager.py`: Multi-agent coordination
+### `src/opensage/session/`
+- Session manager
+- Sandbox lifecycle management
+- Agent creation and caching
+- Multi-agent coordination
 
-### `src/aigise/sandbox/`
-- `base_sandbox.py`: Abstract sandbox interface
-- `native_docker_sandbox.py`: Docker-based sandbox
-- `k8s_sandbox.py`: Kubernetes-based sandbox
+### `src/opensage/sandbox/`
+- Abstract sandbox interface
+- Docker-based sandbox
+- Kubernetes-based sandbox
 - `initializers/`: Sandbox initialization logic
 
-### `src/aigise/toolbox/`
+### `src/opensage/toolbox/`
 - `static_analysis/`: Joern, CodeQL integration
 - `fuzzing/`: Fuzzing tools
 - `debugger/`: GDB integration
 - `coverage/`: Coverage analysis
 - `retrieval/`: Code search tools
 
-### `src/aigise/evaluations/`
+### `src/opensage/evaluations/`
 - `cybergym/`: CyberGym benchmark
 - `patchagent/`: PatchAgent benchmark
 - `secodeplt/`: SecCodePLT benchmark
