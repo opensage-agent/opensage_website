@@ -44,14 +44,6 @@ logger = logging.getLogger(__name__)
 logger.info("Operation started", extra={"session_id": session_id})
 ```
 
-## Common Debugging Tasks
-
-- Check session logs
-- Verify sandbox container status
-- Check configuration values
-- Verify tool imports
-- Check ADK compatibility
-
 ## See Also
 
 - [Best Practices](Best-Practices.md) - Development best practices

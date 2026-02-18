@@ -15,6 +15,12 @@
 
 ## Tool Development
 
+### Python Tools
+
+- Keep tool functions small and focused
+- Write clear docstrings (the LLM uses them as tool descriptions)
+- Prefer structured return values (dict / JSON-like) for complex outputs
+
 ### Agent Skills (Bash Scripts)
 
 - Create structured directory with `SKILL.md` and `scripts/` subdirectory
@@ -50,5 +56,5 @@
 
 ## See Also
 
-- [Common Patterns](Common-Patterns.md) - Common code patterns
+- [Tools](Getting-Started.md#tools) - Tool types and patterns
 - [Contributing](Contributing.md) - Contribution guidelines

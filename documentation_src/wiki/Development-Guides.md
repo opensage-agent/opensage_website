@@ -6,7 +6,7 @@ This section covers how to extend OpenSage with new functionality.
 
 - [Adding Tools](Adding-Tools.md) - How to add new tools
 - [Sandboxes](Sandboxes.md) - Sandbox backends and how to add new sandbox types
-- [Adding Evaluations](Adding-Evaluations.md) - How to add evaluation benchmarks
+- [Adding a Evaluation Benchmark](Adding-Evaluations.md) - How to add evaluation benchmarks
 
 ## Extending the Base Agent
 
@@ -28,5 +28,5 @@ To add features to the base agent:
 ## See Also
 
 - [Best Practices](Best-Practices.md) - Best practices for development
-- [Common Patterns](Common-Patterns.md) - Common code patterns
+- [Tools](Getting-Started.md#tools) - Tool types and patterns
 - [Testing Debugging](Testing-Debugging.md) - Testing and debugging guide

@@ -25,19 +25,6 @@ refactor(component): Description
 4. Update documentation
 5. Submit PR with description
 
-## Testing Requirements
-
-- Add tests for new features
-- Maintain or improve coverage
-- Test with multiple sandbox types
-- Test error cases
-
-## Documentation
-
-- Update relevant documentation
-- Add code examples where helpful
-- Keep wiki pages updated
-
 ## See Also
 
 - [Best Practices](Best-Practices.md) - Development best practices

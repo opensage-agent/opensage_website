@@ -301,7 +301,6 @@ When server stops (Ctrl+C):
 
 ## Related Topics
 
-- [Core Concepts](Core-Concepts.md) - Understanding sessions and sandboxes
 - [Development Guides](Development-Guides.md) - How to develop agents
 - [Testing Debugging](Testing-Debugging.md) - Debugging with web UI
 

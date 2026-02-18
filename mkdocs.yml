@@ -8,9 +8,10 @@ docs_dir: documentation_src/wiki
 site_dir: documentation
 
 # Temporarily hide API reference pages from the build.
-exclude_docs:
-  - generated/api/*.md
-  - API-Reference.md
+exclude_docs: |
+  generated/api/*.md
+  API-Reference.md
+  RL-Integration.md
 
 # Repository information
 repo_url: https://github.com/OpenSage-ADK/OpenSage
@@ -95,22 +96,21 @@ nav:
       - Overview: Entry-Points.md
       - OpenSage Web Entry: OpenSage-Web-Entry.md
       - Evaluation Entry: Evaluation-Entry.md
-      - RL Integration: RL-Integration.md
-    - Core Concepts: Core-Concepts.md
     - Practices:
       - Best Practices: Best-Practices.md
-      - Common Patterns: Common-Patterns.md
       - Testing & Debugging: Testing-Debugging.md
     - Configuration: Configuration.md
   - Developer Guide:
-    - Architecture: Architecture.md
-    - Core Components: Core-Components.md
     - Development Guides: Development-Guides.md
+    - Core Components: Core-Components.md
     - Adding Tools: Adding-Tools.md
-    - Sandboxes: Sandboxes.md
+    - Adding a Evaluation Benchmark: Adding-Evaluations.md
+    - Sandboxes:
+      - Sandbox System Guide: Sandboxes.md
+      - Adding a sandbox: Adding-a-Sandbox.md
+      - Adding a new sandbox backend: Adding-a-New-Sandbox-Backend.md
   - Benchmarking:
     - Overview: Benchmarking.md
-    - Adding Evaluations: Adding-Evaluations.md
   - CLI Reference:
     - Overview: CLI-Reference.md
     - opensage: generated/cli/opensage.md

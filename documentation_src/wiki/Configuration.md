@@ -166,10 +166,10 @@ Configures sandbox environments (Docker containers or Kubernetes pods).
 | Field | Type | Description | Default |
 |-------|------|-------------|---------|
 | `default_image` | `string` | Default Docker image for sandboxes | `None` |
-| `backend` | `string` | Sandbox backend type: `"native"` (Docker) or `"k8s"` (Kubernetes) | `"native"` |
+| `backend` | `string` | Sandbox backend type: `"native"` (Docker) or `"k8s"` (Kubernetes; under development) | `"native"` |
 | `project_relative_shared_data_path` | `string` | Path relative to project root for shared data (will be mounted as `/shared` in containers) | `None` |
 | `absolute_shared_data_path` | `string` | Absolute path for shared data | `None` |
-| `tolerations` | `list[dict]` | Kubernetes tolerations applied to all pods | `None` |
+| `tolerations` | `list[dict]` | Kubernetes tolerations applied to all pods (k8s; under development) | `None` |
 
 #### Per-Sandbox Configuration
 
@@ -620,6 +620,5 @@ If `default_host` is not set, services like Neo4j and MCP will default to `127.0
 ## Related Documentation
 
 - [Getting Started](Getting-Started.md) - Initial setup guide
-- [Architecture](Architecture.md) - System architecture overview
-- [Core Concepts](Core-Concepts.md) - Core concepts including sessions
+- [Core Components](Core-Components.md) - How configuration fits in the system
 - [Sandboxes](Sandboxes.md) - Sandbox backends and configuration guide

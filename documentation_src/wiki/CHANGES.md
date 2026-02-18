@@ -4,7 +4,7 @@ This file summarizes significant changes to the OpenSage documentation.
 
 ## Latest Updates
 
-### Introduction.md - Enhanced Selling Points and Design Philosophy
+### Introduction.md - Enhanced selling points and key features
 
 **Date**: Current update
 

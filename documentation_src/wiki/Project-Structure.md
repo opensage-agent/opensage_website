@@ -4,53 +4,58 @@
 
 ```
 OpenSage/
-├── src/opensage/            # Public Python namespace
-│   ├── agents/              # Agent implementations
-│   ├── cli/                 # Command-line interface
-│   ├── config/              # Configuration system
-│   ├── session/             # Session management
-│   ├── sandbox/             # Sandbox implementations
-│   ├── toolbox/             # Security analysis tools
-│   ├── evaluations/         # Benchmark evaluations
-│   ├── features/            # Framework features
-│   ├── plugins/             # ADK plugins
-│   ├── patches/             # ADK patches
-│   └── templates/           # Configuration templates
-├── examples/                # Example agents and usage
-├── tests/                   # Test suite
-├── docs/                    # Documentation
-└── README.md               # Quick start guide
+├── README.md
+├── docs/                    # Docs source (MkDocs)
+├── src/
+│   └── opensage/              # Core Python package (current layout)
+│       ├── agents/          # Base agent + tool loading
+│       ├── bash_tools/      # Agent Skills (SKILL.md + scripts/)
+│       ├── cli/             # CLI entry points (opensage web / dependency-check)
+│       ├── config/          # TOML config system + dataclasses
+│       ├── evaluations/     # Benchmarks + evaluation runners
+│       ├── features/        # Feature flags / optional behaviors
+│       ├── memory/          # Neo4j-backed memory (search/update/tools)
+│       ├── plugins/         # ADK plugins
+│       ├── sandbox/         # Sandbox backends + initializers
+│       ├── sandbox_scripts/ # Scripts invoked inside sandboxes
+│       ├── session/         # Session + managers (sandboxes/agents/neo4j/ensemble)
+│       ├── templates/       # Default configs + Dockerfiles
+│       ├── toolbox/         # Python tool wrappers / MCP toolsets
+│       ├── util_agents/     # Utility sub-agents (e.g. memory management)
+│       └── utils/           # Shared utilities
+├── examples/                # Example agents and configs
+├── tests/                   # Unit/integration tests
+└── third_party/             # External benchmark/tool dependencies
 ```
 
 ## Key Directories Explained
 
 ### `src/opensage/agents/`
-- Extended ADK agent class
-- Tool loading and dynamic tool injection
+- OpenSage base agent and tool description loading (`ToolLoader`)
 
 ### `src/opensage/session/`
-- Session manager
+- Session manager and per-session resource isolation
 - Sandbox lifecycle management
-- Agent creation and caching
-- Multi-agent coordination
+- Dynamic agent management and ensemble management
 
 ### `src/opensage/sandbox/`
 - Abstract sandbox interface
 - Docker-based sandbox
-- Kubernetes-based sandbox
+- Kubernetes-based sandbox (under development)
 - `initializers/`: Sandbox initialization logic
 
+### `src/opensage/bash_tools/`
+- Filesystem-discovered Skills (bash tools)
+- Each Skill: `SKILL.md` + `scripts/` (+ optional `deps/`)
+
 ### `src/opensage/toolbox/`
-- `static_analysis/`: Joern, CodeQL integration
-- `fuzzing/`: Fuzzing tools
-- `debugger/`: GDB integration
-- `coverage/`: Coverage analysis
-- `retrieval/`: Code search tools
+- Python-side tools, MCP toolsets, and wrappers used by agents
 
 ### `src/opensage/evaluations/`
 - `cybergym/`: CyberGym benchmark
 - `patchagent/`: PatchAgent benchmark
 - `secodeplt/`: SecCodePLT benchmark
+- `swe_bench_pro/` SWE-Bench Pro benchmark
 
 ## See Also
 

@@ -2,15 +2,44 @@
 
 ## Overview
 
-In OpenSage, tools are implemented as **Agent Skills** (bash scripts) or **MCP toolsets** (Model Context Protocol), rather than Python functions. This design allows tools to be executed directly in sandbox containers via bash commands, providing better isolation and flexibility.
+OpenSage supports three tool types:
+
+1. **Python tools**: any callable function (docstring becomes the tool description)
+2. **Agent Skills**: filesystem-discovered bash/Python scripts described by `SKILL.md`
+3. **MCP toolsets**: external services exposed via MCP (typically SSE)
 
 ## Tool Types
 
-### 1. Agent Skills (Bash Scripts)
+### 1. Python Tools
+
+Python tools are any callable functions you include in your agent’s `tools=[...]`.
+The function signature becomes the tool schema, and the docstring is shown to
+the model as the tool description.
+
+**Example:**
+
+```python
+def greet(name: str) -> str:
+    """Return a friendly greeting."""
+    return f"Hello, {name}!"
+```
+
+**Enable in your agent:**
+
+```python
+root_agent = OpenSageAgent(
+    name="my_agent",
+    model=...,
+    instruction="...",
+    tools=[greet],
+)
+```
+
+### 2. Agent Skills (Bash Scripts)
 
 Agent Skills are bash scripts organized in a structured directory format with metadata. They are automatically discovered and loaded by the framework.
 
-### 2. MCP Toolsets
+### 3. MCP Toolsets
 
 MCP (Model Context Protocol) toolsets provide integration with external services or tools running in separate containers, typically accessed via SSE (Server-Sent Events) connections.
 
@@ -43,7 +72,7 @@ src/opensage/bash_tools/
 
 The `SKILL.md` file contains YAML frontmatter and markdown documentation:
 
-```markdown
+````markdown
 ---
 name: tool-name
 description: Brief description of what the tool does
@@ -104,7 +133,7 @@ main
 ## Timeout
 
 Default timeout: 60 seconds
-```
+````
 
 Notes:
 
@@ -253,6 +282,10 @@ The function should:
 
 ## Tool Registration
 
+### For Python Tools
+
+Add the callable directly to your agent’s `tools` list.
+
 ### For Agent Skills
 
 Agent Skills are automatically discovered and registered. No manual registration needed.
@@ -282,6 +315,5 @@ agent = Agent(
 
 ## See Also
 
-- [Common Patterns](Common-Patterns.md) - Tool development patterns
+- [Tools](Getting-Started.md#tools) - Tool types and patterns
 - [Best Practices](Best-Practices.md) - Best practices for tools
-- [Core Concepts](Core-Concepts.md) - Understanding tools in context

@@ -374,5 +374,4 @@ Report Generated
 ## Related Topics
 
 - [Entry Points](Entry-Points.md) - Overview of entry points
-- [Core Concepts](Core-Concepts.md) - Understanding sessions
 - [Testing Debugging](Testing-Debugging.md) - Debugging evaluations

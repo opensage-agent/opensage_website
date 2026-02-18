@@ -1,4 +1,4 @@
-# Adding a New Evaluation Benchmark
+# Adding a Evaluation Benchmark
 
 ## Overview
 

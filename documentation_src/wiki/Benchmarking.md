@@ -13,5 +13,5 @@ performance across tasks.
 
 - [Evaluation Entry](Evaluation-Entry.md): Batch evaluation workflow and
   lifecycle.
-- [Adding Evaluations](Adding-Evaluations.md): How to integrate a new benchmark.
+- [Adding a Evaluation Benchmark](Adding-Evaluations.md): How to integrate a new benchmark.
 
