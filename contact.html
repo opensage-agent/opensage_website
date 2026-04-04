@@ -3,48 +3,116 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Primary Meta Tags -->
-  <meta name="title" content="Contact — OpenSage Team">
-  <meta name="description" content="Meet the OpenSage research team and get in touch.">
-  <meta name="author" content="OpenSage Team">
-  <meta name="robots" content="index, follow">
-  <meta name="language" content="English">
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="OpenSage">
-  <meta property="og:title" content="Contact — OpenSage Team">
-  <meta property="og:description" content="Meet the OpenSage research team and get in touch.">
-  <meta property="og:image" content="static/images/social_preview.svg">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Contact — OpenSage Team">
-  <meta name="twitter:description" content="Meet the OpenSage research team and get in touch.">
-  <meta name="twitter:image" content="static/images/social_preview.svg">
-
-  <title>Contact — OpenSage Team</title>
+  <title>OpenSage Team</title>
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="static/opensage.svg?v=3">
   <link rel="alternate icon" type="image/x-icon" href="favicon.ico?v=3">
-  <link rel="apple-touch-icon" href="static/opensage.png?v=3">
 
   <!-- CSS -->
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/index.css?v=2">
   <link rel="stylesheet" href="static/css/adk.css?v=2">
-  <link rel="stylesheet" href="static/css/contact.css?v=1">
 
   <!-- Non-critical CSS -->
   <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript>
-    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-  </noscript>
+  <noscript><link rel="stylesheet" href="static/css/fontawesome.all.min.css"></noscript>
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    .page-title {
+      color: #ffffff;
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 2.5rem;
+      padding-top: 0.5rem;
+    }
+
+    .section-heading {
+      color: var(--cyber-cyan);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .contact-block {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      margin-bottom: 3rem;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--cyber-border);
+      border-radius: 10px;
+      background: var(--cyber-surface);
+    }
+
+    .contact-name {
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      min-width: 140px;
+      flex-shrink: 0;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      color: var(--cyber-muted) !important;
+      text-decoration: none;
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: color 0.15s;
+    }
+
+    .contact-link:hover {
+      color: var(--cyber-cyan) !important;
+    }
+
+    .contact-link + .contact-link::before {
+      content: '·';
+      color: rgba(255,255,255,0.2);
+      margin-right: 0.25rem;
+    }
+
+    .members-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .member-item {
+      color: var(--cyber-muted);
+      font-size: 0.9rem;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .member-item:last-child {
+      border-bottom: none;
+    }
+
+    .member-name {
+      color: var(--cyber-text);
+      font-weight: 500;
+    }
+  </style>
 </head>
 
 <body>
@@ -68,143 +136,104 @@
     </div>
   </nav>
 
-  <!-- Scroll to Top Button -->
-  <button class="scroll-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Scroll to top" aria-label="Scroll to top">
-    <i class="fas fa-chevron-up"></i>
-  </button>
-
   <main id="main-content">
-    <!-- Hero -->
-    <section class="hero contact-hero">
-      <div class="hero-body">
-        <div class="container is-max-desktop">
-          <div class="columns is-centered">
-            <div class="column has-text-centered">
-              <h1 class="title is-1 publication-title" style="font-size: 3rem !important;">Meet the <span class="title-accent-adk">Team</span></h1>
-              <p class="hero-tagline">
-                We are researchers passionate about building the next generation of intelligent agents.
-                Reach out — we'd love to hear from you.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Team -->
-    <section class="section" id="team">
+    <section class="section">
       <div class="container is-max-desktop">
 
-        <!-- About blurb -->
-        <div class="contact-about">
-          <p>
-            <strong>OpenSage</strong> is a research project developing an AI-centric agent generation engine that lets
-            models self-program agent topology, synthesize toolsets, and manage structured memory — no hand-crafting required.
-            Our team spans AI security, software engineering, and systems research.
-          </p>
+        <h1 class="page-title">OpenSage Team</h1>
+
+        <!-- Contact -->
+        <p class="section-heading">Contact</p>
+        <div class="contact-block">
+
+          <div class="contact-row">
+            <span class="contact-name">Hongwei Li</span>
+            <div class="contact-links">
+              <a href="mailto:hongwei@cs.ucsb.edu" class="contact-link">
+                <i class="fas fa-envelope"></i> hongwei@cs.ucsb.edu
+              </a>
+              <a href="https://github.com/hongwei-li" target="_blank" rel="noopener noreferrer" class="contact-link">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+              <a href="https://scholar.google.com" target="_blank" rel="noopener noreferrer" class="contact-link">
+                <i class="fas fa-graduation-cap"></i> Google Scholar
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-row">
+            <span class="contact-name">Zhun Wang</span>
+            <div class="contact-links">
+              <a href="mailto:zhunwang@berkeley.edu" class="contact-link">
+                <i class="fas fa-envelope"></i> zhunwang@berkeley.edu
+              </a>
+              <a href="https://github.com/zhun-wang" target="_blank" rel="noopener noreferrer" class="contact-link">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+              <a href="https://scholar.google.com" target="_blank" rel="noopener noreferrer" class="contact-link">
+                <i class="fas fa-graduation-cap"></i> Google Scholar
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-row">
+            <span class="contact-name">Yuzhou Nie</span>
+            <div class="contact-links">
+              <a href="mailto:yuzhou@cs.ucsb.edu" class="contact-link">
+                <i class="fas fa-envelope"></i> yuzhou@cs.ucsb.edu
+              </a>
+              <a href="https://github.com/yuzhou-nie" target="_blank" rel="noopener noreferrer" class="contact-link">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+              <a href="https://scholar.google.com" target="_blank" rel="noopener noreferrer" class="contact-link">
+                <i class="fas fa-graduation-cap"></i> Google Scholar
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-row">
+            <span class="contact-name">Wenbo Guo</span>
+            <div class="contact-links">
+              <a href="mailto:wenbo@cs.ucsb.edu" class="contact-link">
+                <i class="fas fa-envelope"></i> wenbo@cs.ucsb.edu
+              </a>
+              <a href="https://github.com/wspr-ncsu" target="_blank" rel="noopener noreferrer" class="contact-link">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+              <a href="https://scholar.google.com" target="_blank" rel="noopener noreferrer" class="contact-link">
+                <i class="fas fa-graduation-cap"></i> Google Scholar
+              </a>
+            </div>
+          </div>
+
         </div>
 
-        <h2 class="section-title has-text-centered">Core Team</h2>
-        <div class="section-title-bar"></div>
+        <!-- Team Members -->
+        <p class="section-heading">Team Members</p>
+        <div class="members-list">
+          <div class="member-item"><span class="member-name">Hongwei Li</span></div>
+          <div class="member-item"><span class="member-name">Zhun Wang</span></div>
+          <div class="member-item"><span class="member-name">Qinrun Dai</span></div>
+          <div class="member-item"><span class="member-name">Yuzhou Nie</span></div>
+          <div class="member-item"><span class="member-name">Jinjun Peng</span></div>
+          <div class="member-item"><span class="member-name">Ruitong Liu</span></div>
+          <div class="member-item"><span class="member-name">Jingyang Zhang</span></div>
+          <div class="member-item"><span class="member-name">Kaijie Zhu</span></div>
+          <div class="member-item"><span class="member-name">Jingxuan He</span></div>
+          <div class="member-item"><span class="member-name">Lun Wang</span></div>
+          <div class="member-item"><span class="member-name">Yangruibo Ding</span></div>
+          <div class="member-item"><span class="member-name">Yueqi Chen</span></div>
+          <div class="member-item"><span class="member-name">Wenbo Guo</span></div>
+          <div class="member-item"><span class="member-name">Dawn Song</span></div>
+        </div>
 
-        <div class="team-grid">
-
-          <!-- Hongwei Li -->
-          <div class="team-card">
-            <div class="team-avatar">HL</div>
-            <div class="team-name">Hongwei Li</div>
-            <div class="team-role">Principal Investigator</div>
-            <div class="team-affiliation">University of California, Santa Barbara</div>
-            <div class="team-links">
-              <a href="mailto:hongwei@cs.ucsb.edu" class="team-link">
-                <i class="fas fa-envelope"></i> Email
-              </a>
-              <a href="https://github.com/opensage-agent" target="_blank" rel="noopener noreferrer" class="team-link">
-                <i class="fab fa-github"></i> GitHub
-              </a>
-              <a href="https://scholar.google.com/citations?user=hongwei-li" target="_blank" rel="noopener noreferrer" class="team-link">
-                <i class="ai ai-google-scholar"></i> Scholar
-              </a>
-            </div>
-          </div>
-
-          <!-- Zhun Wang -->
-          <div class="team-card">
-            <div class="team-avatar purple">ZW</div>
-            <div class="team-name">Zhun Wang</div>
-            <div class="team-role">Research Lead</div>
-            <div class="team-affiliation">University of California, Berkeley</div>
-            <div class="team-links">
-              <a href="mailto:zhunwang@berkeley.edu" class="team-link">
-                <i class="fas fa-envelope"></i> Email
-              </a>
-              <a href="https://github.com/opensage-agent" target="_blank" rel="noopener noreferrer" class="team-link">
-                <i class="fab fa-github"></i> GitHub
-              </a>
-              <a href="https://scholar.google.com/citations?user=zhun-wang" target="_blank" rel="noopener noreferrer" class="team-link">
-                <i class="ai ai-google-scholar"></i> Scholar
-              </a>
-            </div>
-          </div>
-
-          <!-- Yuzhou Nie -->
-          <div class="team-card">
-            <div class="team-avatar green">YN</div>
-            <div class="team-name">Yuzhou Nie</div>
-            <div class="team-role">Research Scientist</div>
-            <div class="team-affiliation">University of California, Santa Barbara</div>
-            <div class="team-links">
-              <a href="mailto:yuzhou@cs.ucsb.edu" class="team-link">
-                <i class="fas fa-envelope"></i> Email
-              </a>
-              <a href="https://github.com/opensage-agent" target="_blank" rel="noopener noreferrer" class="team-link">
-                <i class="fab fa-github"></i> GitHub
-              </a>
-              <a href="https://scholar.google.com/citations?user=yuzhou-nie" target="_blank" rel="noopener noreferrer" class="team-link">
-                <i class="ai ai-google-scholar"></i> Scholar
-              </a>
-            </div>
-          </div>
-
-          <!-- Wenbo Guo -->
-          <div class="team-card">
-            <div class="team-avatar mixed">WG</div>
-            <div class="team-name">Wenbo Guo</div>
-            <div class="team-role">Principal Investigator</div>
-            <div class="team-affiliation">University of California, Santa Barbara</div>
-            <div class="team-links">
-              <a href="mailto:wenbo@cs.ucsb.edu" class="team-link">
-                <i class="fas fa-envelope"></i> Email
-              </a>
-              <a href="https://github.com/wspr-ncsu" target="_blank" rel="noopener noreferrer" class="team-link">
-                <i class="fab fa-github"></i> GitHub
-              </a>
-              <a href="https://scholar.google.com/citations?user=Wenbo-Guo" target="_blank" rel="noopener noreferrer" class="team-link">
-                <i class="ai ai-google-scholar"></i> Scholar
-              </a>
-            </div>
-          </div>
-
-        </div><!-- /team-grid -->
       </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
       <div class="container">
-        <div class="columns is-centered">
-          <div class="column is-8">
-            <div class="content has-text-centered">
-              <p>
-                This page was built using the
-                <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.
-              </p>
-              <p>
-                Licensed under
-                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.
-              </p>
-            </div>
-          </div>
+        <div class="content has-text-centered">
+          <p>Licensed under <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.</p>
         </div>
       </div>
     </footer>
