@@ -109,6 +109,24 @@
           <i class="fab fa-discord"></i>
         </a>
       </div>
+      <button class="adk-hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="adk-mobile-menu" aria-hidden="true">
+      <a href="adk.html" class="adk-nav-link">ADK</a>
+      <a href="inference.html" class="adk-nav-link">Inference</a>
+      <a href="train.html" class="adk-nav-link">Train</a>
+      <a href="env.html" class="adk-nav-link">Env</a>
+      <a href="contact.html" class="adk-nav-link">Contact</a>
+      <div class="adk-mobile-icons">
+        <a href="https://github.com/opensage-agent" target="_blank" rel="noopener noreferrer" class="adk-nav-icon" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://discord.gg/zbKe5ue8xc" target="_blank" rel="noopener noreferrer" class="adk-nav-icon" aria-label="Discord">
+          <i class="fab fa-discord"></i>
+        </a>
+      </div>
     </div>
   </nav>
 
@@ -196,5 +214,35 @@
       </div>
     </section>
   </main>
+  <script>
+    (function () {
+      var btn = document.querySelector('.adk-hamburger');
+      var menu = document.querySelector('.adk-mobile-menu');
+      if (!btn || !menu) return;
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var open = menu.classList.toggle('open');
+        btn.classList.toggle('open', open);
+        btn.setAttribute('aria-expanded', String(open));
+        menu.setAttribute('aria-hidden', String(!open));
+      });
+      document.addEventListener('click', function (e) {
+        if (!e.target.closest('.adk-navbar')) {
+          menu.classList.remove('open');
+          btn.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+          menu.setAttribute('aria-hidden', 'true');
+        }
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          menu.classList.remove('open');
+          btn.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+          menu.setAttribute('aria-hidden', 'true');
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
