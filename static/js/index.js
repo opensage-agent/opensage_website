@@ -1,5 +1,19 @@
 window.HELP_IMPROVE_VIDEOJS = false;
 
+// ── Theme toggle ──
+function toggleTheme() {
+  var html = document.documentElement;
+  var current = html.getAttribute('data-theme');
+  var next = current === 'light' ? 'dark' : 'light';
+  if (next === 'dark') {
+    html.removeAttribute('data-theme');
+    localStorage.removeItem('opensage-theme');
+  } else {
+    html.setAttribute('data-theme', 'light');
+    localStorage.setItem('opensage-theme', 'light');
+  }
+}
+
 // ── Mobile navbar hamburger toggle ──
 (function () {
   function initNavbar() {
@@ -77,6 +91,28 @@ document.addEventListener('keydown', function(event) {
         button.classList.remove('active');
     }
 });
+
+// Copy code block to clipboard
+function copyCodeBlock(btn) {
+    var block = btn.closest('.code-block');
+    var code = block.querySelector('code');
+    if (!code) return;
+    var text = code.textContent;
+    var label = btn.querySelector('.copy-code-text');
+    navigator.clipboard.writeText(text).then(function() {
+        label.textContent = 'Copied!';
+        setTimeout(function() { label.textContent = 'Copy'; }, 2000);
+    }).catch(function() {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        label.textContent = 'Copied!';
+        setTimeout(function() { label.textContent = 'Copy'; }, 2000);
+    });
+}
 
 // Copy BibTeX to clipboard
 function copyBibTeX() {

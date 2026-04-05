@@ -651,18 +651,62 @@ code {
   border-right: 1px solid rgba(255, 255, 255, 0.25) !important;
 }
 
-/* Caption legend — same colors as table */
-.figure-lead .sym-full { color: var(--cyber-cyan) !important;           font-size: 1.1rem !important; }
-.figure-lead .sym-half { color: rgba(0, 180, 220, 0.45) !important;     font-size: 1.1rem !important; }
-.figure-lead .sym-none { color: rgba(255,255,255,0.18) !important;       font-size: 1.1rem !important; }
+/* ── CSS circles for feature matrix ── */
+.circle {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  vertical-align: middle;
+  box-sizing: border-box;
+}
 
-/* Table symbols — colored and centered */
-td.sym-full  { color: var(--cyber-cyan) !important; font-size: 1.1rem !important; text-align: center !important; }
-td.sym-half  { color: rgba(0, 180, 220, 0.45) !important; font-size: 1.1rem !important; text-align: center !important; }
-td.sym-none  { color: rgba(255,255,255,0.18) !important; font-size: 1.1rem !important; text-align: center !important; }
+/* Full — solid */
+.sym-full .circle {
+  background-color: var(--cyber-cyan);
+}
 
-/* OpenSage column dots — override col-opensage color only for sym-full cells */
-td.col-opensage.sym-full { color: var(--cyber-cyan) !important; text-align: center !important; }
+/* Half — left-half filled with border */
+.sym-half .circle {
+  background: linear-gradient(to right, var(--cyber-cyan) 50%, transparent 50%);
+  border: 2px solid var(--cyber-cyan);
+  opacity: 0.55;
+}
+
+/* None — hollow ring */
+.sym-none .circle {
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Table cells — center the circles */
+td.sym-full,
+td.sym-half,
+td.sym-none {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+td.sym-full .circle,
+td.sym-half .circle,
+td.sym-none .circle {
+  display: block;
+  margin: 0 auto;
+}
+
+/* Legend — inline alignment */
+.figure-lead .sym-full,
+.figure-lead .sym-half,
+.figure-lead .sym-none {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+/* OpenSage column full circle — keep cyan */
+td.col-opensage.sym-full .circle {
+  background: var(--cyber-cyan);
+}
 
 /* ── Get Started ── */
 .get-started-steps {
@@ -734,6 +778,35 @@ td.col-opensage.sym-full { color: var(--cyber-cyan) !important; text-align: cent
   letter-spacing: 0.04em;
 }
 
+.code-block-header {
+  justify-content: space-between;
+}
+
+.copy-code-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #a1a1aa;
+  padding: 0.2rem 0.55rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.copy-code-btn:hover {
+  background: rgba(255,255,255,0.06);
+  color: #ffffff;
+}
+
+.copy-code-btn i {
+  font-size: 0.68rem;
+}
+
 .gs-code {
   background: #18181b !important;
   border: none !important;
@@ -750,6 +823,12 @@ td.col-opensage.sym-full { color: var(--cyber-cyan) !important; text-align: cent
   font-size: 0.84rem !important;
   background: transparent !important;
   line-height: 1.7 !important;
+}
+
+/* highlight.js overrides — keep our backgrounds, just use hljs token colors */
+.gs-code code.hljs {
+  background: transparent !important;
+  padding: 0 !important;
 }
 
 /* Links in cyber context */
