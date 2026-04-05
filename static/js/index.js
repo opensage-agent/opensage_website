@@ -1,6 +1,15 @@
 window.HELP_IMPROVE_VIDEOJS = false;
 
 // ── Theme toggle ──
+function syncOverviewSvg() {
+  var img = document.getElementById('overview-svg');
+  if (!img) return;
+  var isLight = document.documentElement.getAttribute('data-theme') === 'light';
+  img.src = isLight
+    ? 'static/opensage-overview-transparent-light.svg'
+    : 'static/opensage-overview-transparent.svg';
+}
+
 function toggleTheme() {
   var html = document.documentElement;
   var current = html.getAttribute('data-theme');
@@ -12,7 +21,11 @@ function toggleTheme() {
     html.setAttribute('data-theme', 'light');
     localStorage.setItem('opensage-theme', 'light');
   }
+  syncOverviewSvg();
 }
+
+// Set correct SVG on page load
+document.addEventListener('DOMContentLoaded', syncOverviewSvg);
 
 // ── Mobile navbar hamburger toggle ──
 (function () {
