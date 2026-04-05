@@ -467,22 +467,17 @@ def mk_agent(session_id: str, model=None):
     <!-- BibTeX -->
     <section class="section" id="BibTeX">
       <div class="container is-max-desktop content">
-        <div class="bibtex-header">
-          <h2 class="title is-3">Citation</h2>
-          <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
-            <i class="fas fa-copy"></i>
-            <span class="copy-text">Copy</span>
-          </button>
-        </div>
-        <pre id="bibtex-code"><code>@article{li2026opensage,
+        <h2 class="title is-3" id="citation-title">Citation</h2>
+        <div class="code-block"><div class="code-block-header"><span>BibTeX</span><button class="copy-code-btn" onclick="copyCodeBlock(this)" title="Copy to clipboard"><i class="fas fa-copy"></i><span class="copy-code-text">Copy</span></button></div>
+        <pre id="bibtex-code" class="gs-code" style="white-space:pre-wrap;word-wrap:break-word;"><code class="language-tex">@article{li2026opensage,
       title={OpenSage: Self-programming Agent Generation Engine}, 
       author={Hongwei Li and Zhun Wang and Qinrun Dai and Yuzhou Nie and Jinjun Peng and Ruitong Liu and Jingyang Zhang and Kaijie Zhu and Jingxuan He and Lun Wang and Yangruibo Ding and Yueqi Chen and Wenbo Guo and Dawn Song},
       year={2026},
       eprint={2602.16891},
       archivePrefix={arXiv},
       primaryClass={cs.AI},
-      url={https://arxiv.org/abs/2602.16891}, 
-}</code></pre>
+      url={https://arxiv.org/abs/2602.16891},
+}</code></pre></div>
       </div>
     </section>
 
@@ -503,10 +498,8 @@ def mk_agent(session_id: str, model=None):
   </main>
 
   <script>
-    // Initialize highlight.js
     hljs.highlightAll();
 
-    // Sync hljs theme with site theme
     function syncHljsTheme() {
       var isLight = document.documentElement.getAttribute('data-theme') === 'light';
       document.getElementById('hljs-dark-theme').disabled = isLight;
@@ -514,12 +507,14 @@ def mk_agent(session_id: str, model=None):
     }
     syncHljsTheme();
 
-    // Patch toggleTheme to also swap hljs stylesheet
-    var _origToggle = window.toggleTheme;
-    window.toggleTheme = function() {
-      _origToggle();
-      syncHljsTheme();
-    };
+    // Patch toggleTheme after defer scripts have loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      var _origToggle = window.toggleTheme;
+      window.toggleTheme = function() {
+        _origToggle();
+        syncHljsTheme();
+      };
+    });
   </script>
 </body>
 </html>

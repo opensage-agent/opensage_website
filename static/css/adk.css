@@ -517,6 +517,11 @@ ul li {
   color: #ffffff !important;
 }
 
+#citation-title::after {
+  left: 0 !important;
+  transform: none !important;
+}
+
 pre {
   background: #18181b !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
