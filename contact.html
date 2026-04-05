@@ -22,7 +22,7 @@
 
   <!-- Apply saved theme immediately to prevent flash -->
   <script>
-    (function(){var t=localStorage.getItem('opensage-theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');})();
+    (function(){var t=localStorage.getItem('opensage-theme');if(t==='light'||(t===null&&window.matchMedia('(prefers-color-scheme:light)').matches))document.documentElement.setAttribute('data-theme','light');})();
   </script>
 
   <style>
@@ -229,17 +229,20 @@
   </main>
   <script>
     function toggleTheme() {
-      var html = document.documentElement;
-      var current = html.getAttribute('data-theme');
+      var current = document.documentElement.getAttribute('data-theme');
       var next = current === 'light' ? 'dark' : 'light';
-      if (next === 'dark') {
-        html.removeAttribute('data-theme');
-        localStorage.removeItem('opensage-theme');
+      localStorage.setItem('opensage-theme', next);
+      if (next === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
       } else {
-        html.setAttribute('data-theme', 'light');
-        localStorage.setItem('opensage-theme', 'light');
+        document.documentElement.removeAttribute('data-theme');
       }
     }
+    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function(e) {
+      if (localStorage.getItem('opensage-theme') !== null) return;
+      if (e.matches) document.documentElement.setAttribute('data-theme', 'light');
+      else document.documentElement.removeAttribute('data-theme');
+    });
     (function () {
       var btn = document.querySelector('.adk-hamburger');
       var menu = document.querySelector('.adk-mobile-menu');

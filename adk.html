@@ -63,7 +63,7 @@
   <script>
     (function(){
       var t=localStorage.getItem('opensage-theme');
-      if(t==='light'){
+      if(t==='light'||(t===null&&window.matchMedia('(prefers-color-scheme:light)').matches)){
         document.documentElement.setAttribute('data-theme','light');
         var d=document.getElementById('hljs-dark-theme');if(d)d.disabled=true;
         var l=document.getElementById('hljs-light-theme');if(l)l.disabled=false;

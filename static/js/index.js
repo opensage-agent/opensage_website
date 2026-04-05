@@ -10,22 +10,30 @@ function syncOverviewSvg() {
     : 'static/opensage-overview-transparent.svg';
 }
 
-function toggleTheme() {
-  var html = document.documentElement;
-  var current = html.getAttribute('data-theme');
-  var next = current === 'light' ? 'dark' : 'light';
-  if (next === 'dark') {
-    html.removeAttribute('data-theme');
-    localStorage.removeItem('opensage-theme');
+function applyTheme(theme) {
+  if (theme === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
   } else {
-    html.setAttribute('data-theme', 'light');
-    localStorage.setItem('opensage-theme', 'light');
+    document.documentElement.removeAttribute('data-theme');
   }
   syncOverviewSvg();
 }
 
+function toggleTheme() {
+  var current = document.documentElement.getAttribute('data-theme');
+  var next = current === 'light' ? 'dark' : 'light';
+  localStorage.setItem('opensage-theme', next);
+  applyTheme(next);
+}
+
 // Set correct SVG on page load
 document.addEventListener('DOMContentLoaded', syncOverviewSvg);
+
+// Listen for OS-level theme changes (only when user hasn't set a preference)
+window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function(e) {
+  if (localStorage.getItem('opensage-theme') !== null) return;
+  applyTheme(e.matches ? 'light' : 'dark');
+});
 
 // ── Mobile navbar hamburger toggle ──
 (function () {
