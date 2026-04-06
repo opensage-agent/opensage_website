@@ -37,6 +37,7 @@
   <link rel="stylesheet" href="static/css/index.css">
   <link rel="stylesheet" href="static/css/adk.css">
   <link rel="stylesheet" href="static/css/light-theme.css">
+  <link rel="stylesheet" href="static/css/overview-diagram.css">
 
   <!-- Non-critical CSS -->
   <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -45,7 +46,7 @@
   </noscript>
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- JS -->
   <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -360,8 +361,112 @@
 
         <div class="columns is-centered">
           <div class="column is-full">
-            <figure class="overview-figure" style="max-width: 100%; margin: 1rem -2rem 0.75rem;">
-              <img id="overview-svg" src="static/opensage-overview-transparent.svg" alt="OpenSage system overview" loading="lazy" style="max-width: 100%;">
+            <figure class="overview-figure" style="max-width: 100%; margin: 1rem 0 1rem;">
+              <div class="overview-diagram" id="overview-diagram" role="img" aria-label="OpenSage system overview">
+
+                <!-- Title -->
+                <div class="od-title">
+                  <h2>OpenSage Architecture</h2>
+                  <p>End-to-end pipeline: environment &rarr; rollout &rarr; training</p>
+                </div>
+
+                <!-- Top row: Env ↔ ADK -->
+                <div class="od-top-row">
+
+                  <!-- OpenSage-Env card -->
+                  <a href="env.html" class="od-card od-card--env">
+                    <div class="od-card__header">
+                      <span class="od-card__icon"><i class="fab fa-docker"></i></span>
+                      <span class="od-card__title">OpenSage-Env</span>
+                    </div>
+                    <ul class="od-card__body">
+                      <li>Connect to many envs (AgentBeats)</li>
+                      <li>OpenSage auto env generation</li>
+                      <li>NitroBox: lightweight Docker</li>
+                    </ul>
+                  </a>
+
+                  <!-- Bidirectional arrows -->
+                  <div class="od-mid-arrows">
+                    <div class="od-mid-arrow od-mid-arrow--right">
+                      <span class="od-mid-arrow__label">observations, reward</span>
+                      <div class="od-mid-arrow__line"></div>
+                    </div>
+                    <div class="od-mid-arrow od-mid-arrow--left">
+                      <span class="od-mid-arrow__label">actions</span>
+                      <div class="od-mid-arrow__line"></div>
+                    </div>
+                  </div>
+
+                  <!-- OpenSage-ADK card -->
+                  <a href="adk.html" class="od-card od-card--adk">
+                    <div class="od-card__header">
+                      <span class="od-card__icon"><i class="fas fa-robot"></i></span>
+                      <span class="od-card__title">OpenSage-ADK</span>
+                    </div>
+                    <ul class="od-card__body">
+                      <li>AI-centric agent topology generation</li>
+                      <li>AI-centric tool creation</li>
+                      <li>Comprehensive memory system</li>
+                    </ul>
+                  </a>
+
+                </div>
+
+                <!-- Down arrows from Env and ADK -->
+                <div class="od-connector od-connector--split">
+                  <div class="od-varrow">
+                    <div class="od-varrow__line"></div>
+                    <div class="od-varrow__head"></div>
+                  </div>
+                  <div class="od-varrow">
+                    <div class="od-varrow__line"></div>
+                    <div class="od-varrow__head"></div>
+                  </div>
+                </div>
+
+                <!-- Rollout Collection band -->
+                <div class="od-rollout">
+                  <p class="od-rollout__title"><span>Rollout Collection (OpenSage-eval layer)</span></p>
+                  <p class="od-rollout__body">Agent interacts with env; collects trajectories + rewards</p>
+                </div>
+
+                <!-- Down arrow: trajectories -->
+                <div class="od-connector">
+                  <div class="od-varrow">
+                    <div class="od-varrow__line"></div>
+                    <div class="od-varrow__head"></div>
+                    <span class="od-varrow__label">trajectories</span>
+                  </div>
+                </div>
+
+                <!-- Training Framework section -->
+                <div class="od-training">
+                  <p class="od-training__title">
+                    <span>Training Framework</span>&ensp;<em>(veRL, SLIME, AReaL, etc.)</em>
+                  </p>
+                  <div class="od-training__cards">
+                    <a href="inference.html" class="od-card od-card--inference">
+                      <div class="od-card__header">
+                        <span class="od-card__icon"><i class="fas fa-brain"></i></span>
+                        <span class="od-card__title">OpenSage-Inference</span>
+                      </div>
+                      <p class="od-card__body">Fast and modularized inference engine</p>
+                    </a>
+                    <div class="od-harrow">
+                      <div class="od-harrow__line"></div>
+                    </div>
+                    <a href="train.html" class="od-card od-card--training">
+                      <div class="od-card__header">
+                        <span class="od-card__icon"><i class="fas fa-cogs"></i></span>
+                        <span class="od-card__title">OpenSage-Training</span>
+                      </div>
+                      <p class="od-card__body">Naturally support agentic-training framework (AReaL/SLIME) and Ray</p>
+                    </a>
+                  </div>
+                </div>
+
+              </div>
             </figure>
           </div>
         </div>

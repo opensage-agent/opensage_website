@@ -1,22 +1,12 @@
 window.HELP_IMPROVE_VIDEOJS = false;
 
 // ── Theme toggle ──
-function syncOverviewSvg() {
-  var img = document.getElementById('overview-svg');
-  if (!img) return;
-  var isLight = document.documentElement.getAttribute('data-theme') === 'light';
-  img.src = isLight
-    ? 'static/opensage-overview-transparent-light.svg'
-    : 'static/opensage-overview-transparent.svg';
-}
-
 function applyTheme(theme) {
   if (theme === 'light') {
     document.documentElement.setAttribute('data-theme', 'light');
   } else {
     document.documentElement.removeAttribute('data-theme');
   }
-  syncOverviewSvg();
 }
 
 function toggleTheme() {
@@ -25,9 +15,6 @@ function toggleTheme() {
   localStorage.setItem('opensage-theme', next);
   applyTheme(next);
 }
-
-// Set correct SVG on page load
-document.addEventListener('DOMContentLoaded', syncOverviewSvg);
 
 // Listen for OS-level theme changes (only when user hasn't set a preference)
 window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function(e) {
