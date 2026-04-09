@@ -900,6 +900,50 @@ td.col-opensage.sym-full .circle {
   color: var(--cyber-cyan) !important;
 }
 
+/* ── Coming Soon badge ── */
+.coming-soon {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: default;
+  position: relative;
+}
+
+.coming-soon::after {
+  content: "soon";
+  font-size: 0.55rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.12);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  border-radius: 4px;
+  padding: 0.05em 0.35em;
+  margin-left: 0.4em;
+  vertical-align: super;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* Coming-soon on nav cards: position badge top-right */
+.index-nav-card.coming-soon::after,
+.od-card.coming-soon::after {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  margin-left: 0;
+  font-size: 0.6rem;
+  padding: 0.15em 0.45em;
+}
+
+/* Coming-soon hero buttons */
+.button.coming-soon {
+  opacity: 0.45;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: var(--cyber-muted) !important;
+  box-shadow: none !important;
+}
+
 /* ── Thin scanline overlay (subtle, aesthetic only) ── */
 .opensage-hero::after {
   content: '';
